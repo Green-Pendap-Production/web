@@ -24,7 +24,7 @@ const {
 >
     <!-- Image Container -->
     <div
-        class={`aspect-video overflow-hidden ${featured ? "md:aspect-[21/9]" : ""}`}
+        class={`aspect-video overflow-hidden ${featured ? "md:aspect-21/9" : ""}`}
     >
         <img
             src={image}
@@ -34,7 +34,7 @@ const {
 
         <!-- Overlay -->
         <div
-            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"
+            class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"
         >
         </div>
     </div>

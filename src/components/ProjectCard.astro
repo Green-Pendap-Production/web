@@ -1,0 +1,48 @@
+---
+interface Props {
+    title: string;
+    genre: string;
+    image: string;
+    year: string;
+}
+
+const { title, genre, image, year } = Astro.props;
+---
+
+<article class="group cursor-pointer">
+    <div
+        class="relative overflow-hidden aspect-video bg-gray-200 mb-3 border border-gpp-text/10"
+    >
+        <div
+            class="absolute inset-0 bg-gpp-primary/0 group-hover:bg-gpp-primary/20 transition-colors z-10 w-full h-full"
+        >
+        </div>
+        <img
+            src={image}
+            alt={title}
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+        />
+    </div>
+
+    <div
+        class="flex justify-between items-start border-t border-gpp-text/20 pt-3"
+    >
+        <div>
+            <h3
+                class="font-heading text-2xl text-gpp-primary group-hover:text-gpp-accent transition-colors"
+            >
+                {title}
+            </h3>
+            <p
+                class="font-mono text-xs text-gpp-muted uppercase tracking-wider mt-1"
+            >
+                {genre}
+            </p>
+        </div>
+        <span
+            class="font-mono text-xs border border-gpp-text/20 px-2 py-1 rounded-full"
+        >
+            {year}
+        </span>
+    </div>
+</article>

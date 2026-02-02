@@ -1,163 +1,180 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import GameCard from "../components/GameCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
-const featuredGames = [
+const allGames = [
     {
         title: "Echoes of the Spire",
         description:
-            "A narrative-driven action RPG set in a crumbling world of floating islands. Master the art of aerial combat and uncover the secrets of the ancients.",
-        image: "https://placehold.co/600x400/1a1a1a/625C28?text=Echoes+of+the+Spire",
-        tags: ["RPG", "Action", "Story Rich"],
-        link: "/games/echoes-of-the-spire",
-        featured: true,
+            "A narrative-driven action RPG set in a crumbling world of floating islands.",
+        image: "https://placehold.co/600x400/2F4F2F/F4F4F0?text=Echoes",
+        genre: "Action RPG",
+        year: "2025",
     },
     {
         title: "Neon Shadows",
         description:
-            "Cyberpunk stealth tactics game where every decision matters. Infiltrate mega-corporations and expose the truth behind the city's eternal night.",
-        image: "https://placehold.co/600x400/1a1a1a/B38B4D?text=Neon+Shadows",
-        tags: ["Strategy", "Stealth", "Cyberpunk"],
-        link: "/games/neon-shadows",
+            "Cyberpunk stealth tactics game where every decision matters.",
+        image: "https://placehold.co/600x400/8B5A2B/F4F4F0?text=Neon+Shadows",
+        genre: "Stealth Strategy",
+        year: "2024",
     },
     {
         title: "Forest of Whispers",
-        description:
-            "A hauntingly beautiful puzzle-adventure game. Guide a lost spirit through a mystical forest inhabited by ancient folklore creatures.",
-        image: "https://placehold.co/600x400/1a1a1a/54533E?text=Forest+of+Whispers",
-        tags: ["Puzzle", "Adventure", "Atmospheric"],
-        link: "/games/forest-of-whispers",
-    },
-];
-
-const latestNews = [
-    {
-        date: "Oct 24, 2025",
-        title: "Green Pendap Production Wins Indie Award",
-        excerpt:
-            "We are humbled to announce that Echoes of the Spire has won 'Best Narrative' at the Global Indie Showcase!",
+        description: "A hauntingly beautiful puzzle-adventure game.",
+        image: "https://placehold.co/600x400/54533E/F4F4F0?text=Forest",
+        genre: "Puzzle Adventure",
+        year: "2024",
     },
     {
-        date: "Sep 15, 2025",
-        title: "Development Update: Neon Shadows",
-        excerpt:
-            "Check out our latest devlog detailing the new AI systems and stealth mechanics coming in the next big update.",
+        title: "Cyber Rush 2099",
+        description: "High-octane arcade racing with a synthwave soundtrack.",
+        image: "https://placehold.co/600x400/1A1A1A/F4F4F0?text=Rush",
+        genre: "Arcade Racing",
+        year: "2023",
     },
 ];
 ---
 
-<Layout title="Green Pendap Production | Indie Game Studio">
-    <Hero />
+<Layout title="Green Pendap Production">
+    <!-- Hero Section -->
+    <section
+        id="home"
+        class="min-h-screen flex flex-col justify-center items-start mb-24"
+    >
+        <span class="text-gpp-accent font-mono tracking-widest uppercase mb-4"
+            >Indie Game Studio</span
+        >
+        <h1
+            class="text-7xl md:text-9xl font-heading text-gpp-primary leading-none mb-8"
+        >
+            CRAFTING<br />
+            DIGITAL<br />
+            FORESTS
+        </h1>
+        <p
+            class="text-xl md:text-2xl text-gpp-text/80 max-w-2xl font-serif italic mb-12"
+        >
+            "Games should be more than just entertainment—they should be
+            experiences that stick with you."
+        </p>
+        <a
+            href="#games"
+            class="inline-block border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-colors font-bold text-lg"
+        >
+            View Our Work &darr;
+        </a>
+    </section>
 
-    <!-- Featured Games Section -->
-    <section class="py-20 bg-gpp-dark/30">
-        <div class="container mx-auto px-4">
+    <!-- Games Section -->
+    <section id="games" class="mb-32 pt-16">
+        <h2
+            class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
+        >
+            Selected Works
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+            {allGames.map((game) => <ProjectCard {...game} />)}
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section
+        id="about"
+        class="mb-32 pt-16 grid grid-cols-1 md:grid-cols-12 gap-12"
+    >
+        <div class="col-span-12 md:col-span-4">
+            <h2
+                class="text-4xl font-heading text-gpp-primary mb-6 border-b border-gpp-text/10 pb-4"
+            >
+                Our Studio
+            </h2>
+        </div>
+        <div
+            class="col-span-12 md:col-span-8 space-y-8 text-lg leading-relaxed"
+        >
+            <p class="text-2xl font-serif italic text-gpp-accent">
+                Founded in 2025 in the heart of Bengkulu, Indonesia.
+            </p>
+            <p>
+                We are a diverse team of artists, programmers, and storytellers
+                who believe in the power of interactive media. Like the <span
+                    class="text-gpp-primary font-bold">Pendap</span
+                > — a traditional dish wrapped in leaves — our games are wrapped in
+                layers of mystery and flavor, waiting to be unfolded.
+            </p>
             <div
-                class="flex flex-col md:flex-row justify-between items-end mb-12"
+                class="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-gpp-text/10"
             >
                 <div>
-                    <h2
-                        class="text-3xl md:text-4xl font-bold font-display text-white mb-2"
-                    >
-                        Featured Projects
-                    </h2>
-                    <div class="h-1 w-20 bg-gpp-accent rounded"></div>
+                    <h3 class="font-heading text-xl mb-2">Philosophy</h3>
+                    <p class="text-sm text-gpp-muted">
+                        Creativity over trends. Player experience over
+                        monetization. Handcrafted over procedural.
+                    </p>
                 </div>
-                <a
-                    href="/games"
-                    class="hidden md:inline-flex items-center text-gpp-accent hover:text-white transition-colors mt-4 md:mt-0"
-                >
-                    View All Games
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 ml-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                <div>
+                    <h3 class="font-heading text-xl mb-2">Team</h3>
+                    <p class="text-sm text-gpp-muted">
+                        A small, tight-knit group of dreamers working remotely
+                        and on-site to build new worlds.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+        id="contact"
+        class="min-h-[50vh] pt-16 bg-gpp-primary text-gpp-bg -mx-12 px-12 pb-12 flex flex-col justify-between rounded-t-3xl mt-24"
+    >
+        <div>
+            <h2 class="text-6xl font-heading mb-12 opacity-90">Let's Talk</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3
+                        class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featuredGames.map((game) => <GameCard {...game} />)}
-            </div>
-
-            <div class="mt-12 text-center md:hidden">
-                <a
-                    href="/games"
-                    class="inline-block px-6 py-3 border border-gpp-accent text-gpp-accent rounded hover:bg-gpp-accent hover:text-white transition-all"
-                >
-                    View All Games
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest News Section -->
-    <section class="py-20 bg-black/20">
-        <div class="container mx-auto px-4">
-            <h2
-                class="text-3xl md:text-4xl font-bold font-display text-white mb-12 text-center"
-            >
-                Latest News
-            </h2>
-
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-            >
-                {
-                    latestNews.map((news) => (
-                        <article class="bg-gpp-dark border-l-4 border-gpp-accent p-6 hover:bg-gpp-dark/80 transition-colors">
-                            <span class="text-sm text-gpp-accent/80 font-mono mb-2 block">
-                                {news.date}
-                            </span>
-                            <h3 class="text-xl font-bold text-white mb-3 hover:text-gpp-accent cursor-pointer transition-colors">
-                                <a href="#">{news.title}</a>
-                            </h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                {news.excerpt}
-                            </p>
-                        </article>
-                    ))
-                }
+                        General Inquiries
+                    </h3>
+                    <a
+                        href="mailto:contact@greenpendap.com"
+                        class="text-2xl hover:underline decoration-gpp-accent underline-offset-4"
+                        >contact@greenpendap.com</a
+                    >
+                </div>
+                <div>
+                    <h3
+                        class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
+                    >
+                        Careers
+                    </h3>
+                    <a
+                        href="mailto:jobs@greenpendap.com"
+                        class="text-2xl hover:underline decoration-gpp-accent underline-offset-4"
+                        >jobs@greenpendap.com</a
+                    >
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Newsletter / CTA -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gpp-primary/10"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2
-                class="text-3xl md:text-5xl font-bold font-display text-white mb-6"
-            >
-                Join Our Community
-            </h2>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                Be the first to know about upcoming releases, beta tests, and
-                exclusive behind-the-scenes content.
+        <div
+            class="mt-24 flex justify-between items-end border-t border-white/20 pt-8"
+        >
+            <p class="text-sm opacity-50">
+                &copy; 2025 Green Pendap Production. All rights reserved.
             </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a
-                    href="#"
-                    class="px-8 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gpp-accent transition-colors"
+                    >Twitter</a
                 >
-                    Discord Community
-                </a>
-                <a
-                    href="#"
-                    class="px-8 py-4 bg-gpp-accent hover:bg-yellow-600 text-white font-bold rounded-lg transition-colors"
+                <a href="#" class="hover:text-gpp-accent transition-colors"
+                    >Instagram</a
                 >
-                    Subscribe to Newsletter
-                </a>
+                <a href="#" class="hover:text-gpp-accent transition-colors"
+                    >LinkedIn</a
+                >
             </div>
         </div>
     </section>

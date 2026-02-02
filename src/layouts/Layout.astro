@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
 	title?: string;
@@ -24,11 +23,11 @@ const {
 		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen">
-		<Navbar />
-		<main class="flex-grow">
+	<body class="flex min-h-screen bg-gpp-bg text-gpp-text">
+		<Sidebar />
+		<!-- Main Content Area with left margin to accommodate fixed sidebar -->
+		<main class="grow ml-64 p-12 min-h-screen max-w-5xl">
 			<slot />
 		</main>
-		<Footer />
 	</body>
 </html>
