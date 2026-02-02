@@ -1,5 +1,164 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import GameCard from "../components/GameCard.astro";
+
+const featuredGames = [
+    {
+        title: "Echoes of the Spire",
+        description:
+            "A narrative-driven action RPG set in a crumbling world of floating islands. Master the art of aerial combat and uncover the secrets of the ancients.",
+        image: "https://placehold.co/600x400/1a1a1a/625C28?text=Echoes+of+the+Spire",
+        tags: ["RPG", "Action", "Story Rich"],
+        link: "/games/echoes-of-the-spire",
+        featured: true,
+    },
+    {
+        title: "Neon Shadows",
+        description:
+            "Cyberpunk stealth tactics game where every decision matters. Infiltrate mega-corporations and expose the truth behind the city's eternal night.",
+        image: "https://placehold.co/600x400/1a1a1a/B38B4D?text=Neon+Shadows",
+        tags: ["Strategy", "Stealth", "Cyberpunk"],
+        link: "/games/neon-shadows",
+    },
+    {
+        title: "Forest of Whispers",
+        description:
+            "A hauntingly beautiful puzzle-adventure game. Guide a lost spirit through a mystical forest inhabited by ancient folklore creatures.",
+        image: "https://placehold.co/600x400/1a1a1a/54533E?text=Forest+of+Whispers",
+        tags: ["Puzzle", "Adventure", "Atmospheric"],
+        link: "/games/forest-of-whispers",
+    },
+];
+
+const latestNews = [
+    {
+        date: "Oct 24, 2025",
+        title: "Green Pendap Production Wins Indie Award",
+        excerpt:
+            "We are humbled to announce that Echoes of the Spire has won 'Best Narrative' at the Global Indie Showcase!",
+    },
+    {
+        date: "Sep 15, 2025",
+        title: "Development Update: Neon Shadows",
+        excerpt:
+            "Check out our latest devlog detailing the new AI systems and stealth mechanics coming in the next big update.",
+    },
+];
 ---
 
-<Layout> Hello World </Layout>
+<Layout title="Green Pendap Production | Indie Game Studio">
+    <Hero />
+
+    <!-- Featured Games Section -->
+    <section class="py-20 bg-gpp-dark/30">
+        <div class="container mx-auto px-4">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-12"
+            >
+                <div>
+                    <h2
+                        class="text-3xl md:text-4xl font-bold font-display text-white mb-2"
+                    >
+                        Featured Projects
+                    </h2>
+                    <div class="h-1 w-20 bg-gpp-accent rounded"></div>
+                </div>
+                <a
+                    href="/games"
+                    class="hidden md:inline-flex items-center text-gpp-accent hover:text-white transition-colors mt-4 md:mt-0"
+                >
+                    View All Games
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {featuredGames.map((game) => <GameCard {...game} />)}
+            </div>
+
+            <div class="mt-12 text-center md:hidden">
+                <a
+                    href="/games"
+                    class="inline-block px-6 py-3 border border-gpp-accent text-gpp-accent rounded hover:bg-gpp-accent hover:text-white transition-all"
+                >
+                    View All Games
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="py-20 bg-black/20">
+        <div class="container mx-auto px-4">
+            <h2
+                class="text-3xl md:text-4xl font-bold font-display text-white mb-12 text-center"
+            >
+                Latest News
+            </h2>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            >
+                {
+                    latestNews.map((news) => (
+                        <article class="bg-gpp-dark border-l-4 border-gpp-accent p-6 hover:bg-gpp-dark/80 transition-colors">
+                            <span class="text-sm text-gpp-accent/80 font-mono mb-2 block">
+                                {news.date}
+                            </span>
+                            <h3 class="text-xl font-bold text-white mb-3 hover:text-gpp-accent cursor-pointer transition-colors">
+                                <a href="#">{news.title}</a>
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                {news.excerpt}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter / CTA -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gpp-primary/10"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2
+                class="text-3xl md:text-5xl font-bold font-display text-white mb-6"
+            >
+                Join Our Community
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                Be the first to know about upcoming releases, beta tests, and
+                exclusive behind-the-scenes content.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                    href="#"
+                    class="px-8 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
+                >
+                    Discord Community
+                </a>
+                <a
+                    href="#"
+                    class="px-8 py-4 bg-gpp-accent hover:bg-yellow-600 text-white font-bold rounded-lg transition-colors"
+                >
+                    Subscribe to Newsletter
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

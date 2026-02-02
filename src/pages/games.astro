@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GameCard from "../components/GameCard.astro";
+
+const allGames = [
+    {
+        title: "Echoes of the Spire",
+        description:
+            "A narrative-driven action RPG set in a crumbling world of floating islands. Master the art of aerial combat and uncover the secrets of the ancients.",
+        image: "https://placehold.co/600x400/1a1a1a/625C28?text=Echoes+of+the+Spire",
+        tags: ["RPG", "Action", "Story Rich"],
+        link: "/games/echoes-of-the-spire",
+    },
+    {
+        title: "Neon Shadows",
+        description:
+            "Cyberpunk stealth tactics game where every decision matters. Infiltrate mega-corporations and expose the truth behind the city's eternal night.",
+        image: "https://placehold.co/600x400/1a1a1a/B38B4D?text=Neon+Shadows",
+        tags: ["Strategy", "Stealth", "Cyberpunk"],
+        link: "/games/neon-shadows",
+    },
+    {
+        title: "Forest of Whispers",
+        description:
+            "A hauntingly beautiful puzzle-adventure game. Guide a lost spirit through a mystical forest inhabited by ancient folklore creatures.",
+        image: "https://placehold.co/600x400/1a1a1a/54533E?text=Forest+of+Whispers",
+        tags: ["Puzzle", "Adventure", "Atmospheric"],
+        link: "/games/forest-of-whispers",
+    },
+    {
+        title: "Cyber Rush 2099",
+        description:
+            "High-octane arcade racing with a synthwave soundtrack. Customize your vehicle and dominate the leaderboards.",
+        image: "https://placehold.co/600x400/1a1a1a/333333?text=Cyber+Rush",
+        tags: ["Racing", "Arcade", "Multiplayer"],
+        link: "/games/cyber-rush",
+    },
+];
+---
+
+<Layout
+    title="Our Games | Green Pendap Production"
+    description="Explore the complete collection of games from Green Pendap Production."
+>
+    <div class="bg-gpp-primary/20 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1
+                class="text-4xl md:text-6xl font-bold font-display text-white mb-4"
+            >
+                Our Games
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                From narrative epics to quick arcade thrills, we build worlds
+                for every type of player.
+            </p>
+        </div>
+    </div>
+
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {allGames.map((game) => <GameCard {...game} />)}
+            </div>
+        </div>
+    </section>
+</Layout>

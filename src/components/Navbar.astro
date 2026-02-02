@@ -1,0 +1,57 @@
+---
+const links = [
+    { text: "Home", href: "/" },
+    { text: "Games", href: "/games" },
+    { text: "About", href: "/about" },
+    { text: "Contact", href: "/contact" },
+];
+---
+
+<nav
+    class="bg-gpp-primary/90 backdrop-blur-md sticky top-0 z-50 border-b border-gpp-accent/20"
+>
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a
+            href="/"
+            class="text-2xl font-bold tracking-tighter text-gpp-light font-display"
+        >
+            Green Pendap <span class="text-gpp-accent">Production</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8">
+            {
+                links.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class="text-gpp-light hover:text-gpp-accent transition-colors duration-200 font-medium text-lg"
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <!-- Mobile Menu Button (Placeholder for interactivity if needed later, for now simple stack on mobile or scrollable) -->
+        <button
+            class="md:hidden text-gpp-light focus:outline-none"
+            aria-label="Toggle menu"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+</nav>

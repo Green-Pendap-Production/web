@@ -1,0 +1,95 @@
+---
+
+---
+
+<section
+    class="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
+>
+    <!-- Dynamic Background -->
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-gpp-primary via-gpp-dark to-black opacity-90 z-0"
+    >
+    </div>
+    <div
+        class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 z-0 bg-repeat"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 z-10 text-center">
+        <div
+            class="inline-block mb-6 px-4 py-1.5 rounded-full border border-gpp-accent/40 bg-gpp-accent/10 backdrop-blur-sm animate-fade-in-up"
+        >
+            <span
+                class="text-gpp-accent font-medium tracking-wide text-sm uppercase"
+                >Crafting New Worlds</span
+            >
+        </div>
+
+        <h1
+            class="text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight animate-fade-in-up delay-100"
+        >
+            Green Pendap <br />
+            <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-gpp-accent to-yellow-400"
+                >Production</span
+            >
+        </h1>
+
+        <p
+            class="text-xl text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200"
+        >
+            We are an indie game studio dedicated to creating immersive
+            narrative experiences and challenging gameplay mechanics that leave
+            a lasting impression.
+        </p>
+
+        <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300"
+        >
+            <a
+                href="/games"
+                class="px-8 py-4 bg-gpp-accent hover:bg-yellow-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-gpp-accent/30"
+            >
+                Explore Our Games
+            </a>
+            <a
+                href="/contact"
+                class="px-8 py-4 bg-transparent border-2 border-white/20 hover:border-white/50 text-white font-bold rounded-lg transition-all duration-300 hover:bg-white/5"
+            >
+                Get In Touch
+            </a>
+        </div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div
+        class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gpp-dark to-transparent z-10"
+    >
+    </div>
+</section>
+
+<style>
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .delay-100 {
+        animation-delay: 0.1s;
+    }
+    .delay-200 {
+        animation-delay: 0.2s;
+    }
+    .delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
