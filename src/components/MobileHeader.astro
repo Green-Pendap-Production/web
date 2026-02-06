@@ -1,0 +1,142 @@
+---
+
+---
+
+<header
+    class="md:hidden fixed top-0 left-0 w-full z-50 bg-gpp-bg/80 backdrop-blur-md border-b border-gpp-text/10 px-6 py-4 flex justify-between items-center"
+>
+    <!-- Logo -->
+    <a href="#" class="inline-block">
+        <h1 class="font-heading text-xl text-gpp-primary leading-tight">
+            GREEN PENDAP
+        </h1>
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button
+        id="menu-toggle"
+        class="text-gpp-primary hover:text-gpp-accent focus:outline-none z-50 relative"
+        aria-label="Toggle Menu"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8 transition-transform duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            id="menu-icon"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Fullscreen Menu Overlay -->
+    <div
+        id="mobile-menu"
+        class="fixed inset-0 bg-gpp-bg z-40 flex flex-col justify-start pt-32 items-center opacity-0 pointer-events-none transition-all duration-300 translate-x-full overflow-y-auto w-screen h-screen"
+    >
+        <nav class="flex flex-col gap-8 text-center">
+            <a
+                href="#home"
+                class="font-heading text-4xl hover:text-gpp-accent transition-colors mobile-link"
+                >Home</a
+            >
+            <a
+                href="#games"
+                class="font-heading text-4xl hover:text-gpp-accent transition-colors mobile-link"
+                >Games</a
+            >
+            <a
+                href="#about"
+                class="font-heading text-4xl hover:text-gpp-accent transition-colors mobile-link"
+                >About</a
+            >
+            <a
+                href="#contact"
+                class="font-heading text-4xl hover:text-gpp-accent transition-colors mobile-link"
+                >Contact</a
+            >
+        </nav>
+
+        <div class="absolute bottom-12 flex flex-col gap-2 text-center">
+            <p class="text-sm text-gpp-muted">
+                Est. 2025<br />
+                Bengkulu, Indonesia
+            </p>
+        </div>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    let isMenuOpen = false;
+
+    if (menuToggle && mobileMenu && menuIcon) {
+        menuToggle.addEventListener("click", () => {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                // Open Menu
+                mobileMenu.classList.remove(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "translate-x-full",
+                );
+                mobileMenu.classList.add(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-x-0",
+                );
+                document.body.style.overflow = "hidden"; // Prevent scrolling
+
+                // Change Icon to X
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+            } else {
+                // Close Menu
+                mobileMenu.classList.add(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "translate-x-full",
+                );
+                mobileMenu.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-x-0",
+                );
+                document.body.style.overflow = ""; // Restore scrolling
+
+                // Restore Hamburger Icon
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+            }
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "translate-x-full",
+                );
+                mobileMenu.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-x-0",
+                );
+                document.body.style.overflow = "";
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+            });
+        });
+    }
+</script>

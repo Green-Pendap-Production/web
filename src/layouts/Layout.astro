@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
 
 interface Props {
 	title?: string;
@@ -24,9 +25,12 @@ const {
 		<title>{title}</title>
 	</head>
 	<body class="flex min-h-screen bg-gpp-bg text-gpp-text">
+		<MobileHeader />
 		<Sidebar />
 		<!-- Main Content Area with left margin to accommodate fixed sidebar -->
-		<main class="grow ml-64 p-12 min-h-screen max-w-5xl">
+		<main
+			class="grow ml-0 md:ml-64 p-6 md:p-12 min-h-screen max-w-5xl mt-16 md:mt-0"
+		>
 			<slot />
 		</main>
 	</body>

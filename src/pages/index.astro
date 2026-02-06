@@ -5,11 +5,11 @@ import HeroBackground from "../components/HeroBackground.astro";
 
 const allGames = [
     {
-        title: "Project Title",
-        genre: "Genre",
+        title: "Bantal Battle",
+        genre: "Competitive",
         // image placeholder
-        image: "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        year: "2022",
+        image: "/image.png",
+        year: "2026",
     },
 ];
 ---
@@ -18,7 +18,7 @@ const allGames = [
     <!-- Hero Section -->
     <section
         id="home"
-        class="min-h-screen flex flex-col justify-center items-start mb-24 relative overflow-hidden"
+        class="min-h-[svh] flex flex-col justify-center items-start mb-12 md:mb-24 relative overflow-hidden"
     >
         <HeroBackground />
 
@@ -29,7 +29,7 @@ const allGames = [
                 >GREEN PENDAP INTRODUCING</span
             >
             <h1
-                class="text-7xl md:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
+                class="text-5xl md:text-7xl lg:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
             >
                 <span
                     class="relative group inline-block cursor-default pointer-events-auto"
@@ -65,12 +65,6 @@ const allGames = [
                     >
                 </span>
             </h1>
-            <p
-                class="text-xl md:text-2xl text-gpp-text/80 max-w-2xl font-serif italic mb-12 leading-relaxed"
-            >
-                "Games should be more than just entertainment—they should be
-                experiences that stick with you."
-            </p>
             <a
                 href="#games"
                 class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
@@ -118,8 +112,8 @@ const allGames = [
                 We are a diverse team of artists, programmers, and storytellers
                 who believe in the power of interactive media. Like the <span
                     class="text-gpp-primary font-bold">Pendap</span
-                > — a traditional dish wrapped in leaves — our games are wrapped in
-                layers of mystery and flavor, waiting to be unfolded.
+                > a traditional dish wrapped in leaves our games are wrapped in layers
+                of mystery and flavor.
             </p>
         </div>
     </section>
@@ -166,6 +160,9 @@ const allGames = [
                     </li>
                     <li class="text-gpp-text/80 font-medium">
                         Abdul Vaiz Vahry Iskandar
+                    </li>
+                    <li class="text-gpp-text/80 font-medium">
+                        Muhammad Yusuf Alfarabi
                     </li>
                 </ul>
             </div>
@@ -254,13 +251,7 @@ const allGames = [
             </p>
             <div class="flex gap-6">
                 <a href="#" class="hover:text-gpp-accent transition-colors"
-                    >Twitter</a
-                >
-                <a href="#" class="hover:text-gpp-accent transition-colors"
                     >Instagram</a
-                >
-                <a href="#" class="hover:text-gpp-accent transition-colors"
-                    >LinkedIn</a
                 >
             </div>
         </div>
