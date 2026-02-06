@@ -1,38 +1,87 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import HeroBackground from "../components/HeroBackground.astro";
 
-const allGames = [];
+const allGames = [
+    {
+        title: "Project Title",
+        genre: "Genre",
+        // image placeholder
+        image: "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        year: "2022",
+    },
+];
 ---
 
 <Layout title="Green Pendap Production">
     <!-- Hero Section -->
     <section
         id="home"
-        class="min-h-screen flex flex-col justify-center items-start mb-24"
+        class="min-h-screen flex flex-col justify-center items-start mb-24 relative overflow-hidden"
     >
-        <span class="text-gpp-accent font-mono tracking-widest uppercase mb-4"
-            >Indie Game Studio</span
-        >
-        <h1
-            class="text-7xl md:text-9xl font-heading text-gpp-primary leading-none mb-8"
-        >
-            CRAFTING<br />
-            DIGITAL<br />
-            FORESTS
-        </h1>
-        <p
-            class="text-xl md:text-2xl text-gpp-text/80 max-w-2xl font-serif italic mb-12"
-        >
-            "Games should be more than just entertainment—they should be
-            experiences that stick with you."
-        </p>
-        <a
-            href="#games"
-            class="inline-block border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-colors font-bold text-lg"
-        >
-            View Our Work &darr;
-        </a>
+        <HeroBackground />
+
+        <div class="relative z-10 pointer-events-none">
+            <!-- Content Container -->
+            <span
+                class="text-gpp-accent font-mono tracking-[0.2em] uppercase mb-6 block text-sm md:text-base font-bold"
+                >GREEN PENDAP INTRODUCING</span
+            >
+            <h1
+                class="text-7xl md:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
+            >
+                <span
+                    class="relative group inline-block cursor-default pointer-events-auto"
+                >
+                    <span
+                        class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                    ></span>
+                    <span
+                        class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                        >OUR GAME</span
+                    >
+                </span>
+                <span
+                    class="relative group inline-block cursor-default pointer-events-auto"
+                >
+                    <span
+                        class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                    ></span>
+                    <span
+                        class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                        >IS MADE</span
+                    >
+                </span>
+                <span
+                    class="relative group inline-block cursor-default pointer-events-auto"
+                >
+                    <span
+                        class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                    ></span>
+                    <span
+                        class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
+                        >OF LOVE</span
+                    >
+                </span>
+            </h1>
+            <p
+                class="text-xl md:text-2xl text-gpp-text/80 max-w-2xl font-serif italic mb-12 leading-relaxed"
+            >
+                "Games should be more than just entertainment—they should be
+                experiences that stick with you."
+            </p>
+            <a
+                href="#games"
+                class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
+            >
+                View Our Work
+                <span
+                    class="group-hover:translate-x-1 transition-transform duration-300"
+                    >&darr;</span
+                >
+            </a>
+        </div>
     </section>
 
     <!-- Games Section -->
@@ -75,385 +124,87 @@ const allGames = [];
         </div>
     </section>
 
-    <!-- Team / Ecosystem Section -->
-    <section class="mb-32 relative">
-        <!-- Connecting Vines/Lines Background -->
-        <svg
-            class="absolute top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-20"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M100 100 Q 400 300 100 600"
-                stroke="#2F4F2F"
-                stroke-width="2"
-                fill="none"
-                stroke-dasharray="10 10"></path>
-            <path
-                d="M1000 200 Q 600 500 1000 800"
-                stroke="#8B5A2B"
-                stroke-width="2"
-                fill="none"
-                stroke-dasharray="10 10"></path>
-        </svg>
-
+    <!-- Team Section -->
+    <section class="mb-32">
         <h2
-            class="text-4xl font-heading text-gpp-primary mb-16 border-b border-gpp-text/10 pb-4"
+            class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
         >
             Our Team
         </h2>
 
-        <!-- The Compass / Management -->
-        <div class="mb-24 relative">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div
-                    class="col-span-12 md:col-span-4 flex justify-center md:justify-start"
-                >
-                    <div
-                        class="relative w-64 h-64 border-2 border-gpp-text/10 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm group cursor-pointer"
-                    >
-                        <div
-                            class="absolute inset-0 rounded-full border border-gpp-accent/20 scale-110 group-hover:scale-125 transition-transform duration-700"
-                        >
-                        </div>
-                        <div
-                            class="absolute inset-0 rounded-full border border-gpp-primary/20 scale-125 group-hover:scale-150 transition-transform duration-1000 delay-100"
-                        >
-                        </div>
-
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-24 w-24 text-gpp-accent transform transition-all duration-700 group-hover:rotate-45 group-hover:scale-110"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1"
-                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                        </svg>
-                        <span
-                            class="absolute bottom-8 text-xs font-mono uppercase tracking-widest text-gpp-muted opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0"
-                            >Management Division</span
-                        >
-                    </div>
-                </div>
-                <div class="col-span-12 md:col-span-8">
-                    <div
-                        class="bg-white/40 p-10 rounded-[3rem] rounded-tl-none border border-white/40 shadow-xl backdrop-blur-md relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gpp-accent/10 rounded-full blur-2xl -mr-16 -mt-16 transition-all duration-700 group-hover:bg-gpp-accent/20"
-                        >
-                        </div>
-
-                        <h4
-                            class="font-heading text-5xl text-gpp-text mb-6 relative z-10"
-                        >
-                            Management
-                        </h4>
-                        <p
-                            class="mb-10 text-xl font-serif italic text-gpp-text/70 leading-relaxed border-l-4 border-gpp-accent/50 pl-6 relative z-10"
-                        >
-                            "We have no leader but we have hope"
-                        </p>
-
-                        <div
-                            class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10"
-                        >
-                            <div
-                                class="group/card p-6 rounded-2xl bg-white/60 hover:bg-gpp-primary hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-lg hover:-translate-y-1"
-                            >
-                                <span
-                                    class="block font-heading text-xl mb-1 leading-tight"
-                                    >Abdul Vaiz<br />Vahry Iskandar</span
-                                >
-                            </div>
-                            <div
-                                class="group/card p-6 rounded-2xl bg-white/60 hover:bg-gpp-primary hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-lg hover:-translate-y-1"
-                            >
-                                <span
-                                    class="block font-heading text-xl mb-1 leading-tight"
-                                    >Muhammad Yusuf<br />Alfarabi</span
-                                >
-                            </div>
-                            <div
-                                class="group/card p-6 rounded-2xl bg-white/60 hover:bg-gpp-primary hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-lg hover:-translate-y-1"
-                            >
-                                <span
-                                    class="block font-heading text-xl mb-1 leading-tight"
-                                    >Kevin Stevino<br />Arnovan</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Management -->
+            <div
+                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
+                    Management
+                </h3>
+                <ul class="space-y-3">
+                    <li class="text-gpp-text/80 font-medium">
+                        Abdul Vaiz Vahry Iskandar
+                    </li>
+                    <li class="text-gpp-text/80 font-medium">
+                        Muhammad Yusuf Alfarabi
+                    </li>
+                    <li class="text-gpp-text/80 font-medium">
+                        Kevin Stevino Arnovan
+                    </li>
+                </ul>
             </div>
-        </div>
 
-        <!-- The Craftsmen -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Programming -->
             <div
-                class="bg-gpp-primary/5 p-8 rounded-[2.5rem] rounded-tr-none hover:bg-gpp-primary/10 transition-all duration-500 group hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-gpp-primary/10 relative overflow-hidden"
+                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-                <div
-                    class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-12 -translate-y-12 group-hover:rotate-12 transition-transform duration-700"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-64 w-64 text-gpp-primary"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                    </svg>
-                </div>
-
-                <div
-                    class="flex flex-col items-start gap-4 mb-10 relative z-10"
-                >
-                    <div class="flex items-center justify-between w-full">
-                        <div
-                            class="w-16 h-16 rounded-2xl rotate-3 group-hover:rotate-6 transition-transform duration-500 bg-gpp-primary text-white flex items-center justify-center shadow-lg shadow-gpp-primary/30"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                                ></path>
-                            </svg>
-                        </div>
-                        <!-- Decorative Code Element -->
-                        <div
-                            class="font-mono text-xs text-gpp-primary/30 border border-gpp-primary/10 px-2 py-1 rounded bg-white/20 backdrop-blur-sm -rotate-6"
-                        >
-                            &lt;code/&gt;
-                        </div>
-                    </div>
-
-                    <h4
-                        class="font-heading text-2xl lg:text-3xl text-gpp-primary break-words w-full leading-tight"
-                    >
-                        Programming
-                    </h4>
-                </div>
-                <ul class="space-y-4 relative z-10 w-full">
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm"
-                    >
-                        <span class="font-medium text-base leading-tight"
-                            >Rifqi Reis Ramadhan</span
-                        >
-                        <span
-                            class="w-1.5 h-1.5 rounded-full bg-gpp-primary flex-shrink-0 ml-2"
-                        ></span>
+                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
+                    Programming
+                </h3>
+                <ul class="space-y-3">
+                    <li class="text-gpp-text/80 font-medium">
+                        Rifqi Reis Ramadhan
                     </li>
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm delay-75"
-                    >
-                        <span class="font-medium text-base leading-tight"
-                            >Abdul Vaiz Vahry Iskandar</span
-                        >
-                        <span
-                            class="w-1.5 h-1.5 rounded-full bg-gpp-primary flex-shrink-0 ml-2"
-                        ></span>
+                    <li class="text-gpp-text/80 font-medium">
+                        Abdul Vaiz Vahry Iskandar
                     </li>
                 </ul>
             </div>
 
             <!-- Design -->
             <div
-                class="bg-gpp-accent/5 p-8 rounded-[2.5rem] rounded-tl-none hover:bg-gpp-accent/10 transition-all duration-500 group hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-gpp-accent/10 relative overflow-hidden"
+                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-                <div
-                    class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-12 -translate-y-12 group-hover:rotate-12 transition-transform duration-700"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-64 w-64 text-gpp-accent"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                        ></path>
-                    </svg>
-                </div>
-
-                <div
-                    class="flex flex-col items-start gap-6 mb-12 relative z-10"
-                >
-                    <div
-                        class="w-20 h-20 rounded-2xl -rotate-3 group-hover:-rotate-6 transition-transform duration-500 bg-gpp-accent text-white flex items-center justify-center shadow-lg shadow-gpp-accent/30"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-10 w-10"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                            ></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-heading text-4xl text-gpp-primary">
-                        Design
-                    </h4>
-                </div>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10">
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm"
-                    >
-                        <div
-                            class="flex justify-between items-start w-full gap-2"
-                        >
-                            <span class="font-medium text-base leading-tight"
-                                >Atiqah Najla Fadhilah Rachman</span
-                            >
-                        </div>
+                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
+                    Design
+                </h3>
+                <ul class="space-y-3">
+                    <li class="text-gpp-text/80 font-medium">
+                        Atiqah Najla Fadhilah Rachman
                     </li>
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm delay-75"
-                    >
-                        <div
-                            class="flex justify-between items-start w-full gap-2"
-                        >
-                            <span class="font-medium text-base leading-tight"
-                                >Muhamad Gazril Alfarizi</span
-                            >
-                        </div>
+                    <li class="text-gpp-text/80 font-medium">
+                        Muhamad Gazril Alfarizi
                     </li>
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm delay-100"
-                    >
-                        <div
-                            class="flex justify-between items-start w-full gap-2"
-                        >
-                            <span class="font-medium text-base leading-tight"
-                                >Zora Ghaziyah Wanie</span
-                            >
-                        </div>
+                    <li class="text-gpp-text/80 font-medium">
+                        Zora Ghaziyah Wanie
                     </li>
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm delay-150"
-                    >
-                        <div
-                            class="flex justify-between items-start w-full gap-2"
-                        >
-                            <span class="font-medium text-base leading-tight"
-                                >Zahra Alifia Anshori</span
-                            >
-                        </div>
+                    <li class="text-gpp-text/80 font-medium">
+                        Zahra Alifia Anshori
                     </li>
+                    <li class="text-gpp-text/80 font-medium">Kaysa Naura</li>
                 </ul>
             </div>
 
             <!-- Audio -->
             <div
-                class="bg-gray-500/5 p-8 rounded-[2.5rem] rounded-br-none hover:bg-gray-500/10 transition-all duration-500 group hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-gpp-muted/10 relative overflow-hidden"
+                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-                <div
-                    class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-12 -translate-y-12 group-hover:rotate-12 transition-transform duration-700"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-64 w-64 text-gpp-muted"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                            d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
-                        ></path>
-                    </svg>
-                </div>
-
-                <div
-                    class="flex flex-col items-start gap-6 mb-12 relative z-10"
-                >
-                    <div
-                        class="w-20 h-20 rounded-2xl rotate-3 group-hover:rotate-6 transition-transform duration-500 bg-gpp-muted text-white flex items-center justify-center shadow-lg shadow-gpp-muted/30"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-10 w-10"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
-                            ></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-heading text-4xl text-gpp-primary">
-                        Audio
-                    </h4>
-                </div>
-                <ul class="space-y-4 relative z-10">
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm"
-                    >
-                        <span class="font-medium text-base leading-tight"
-                            >Rafi Andika</span
-                        >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-gpp-muted flex-shrink-0 ml-2"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            ><path
-                                fill-rule="evenodd"
-                                d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
-                                clip-rule="evenodd"></path></svg
-                        >
-                    </li>
-                    <li
-                        class="flex items-center justify-between p-3 bg-white/40 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm delay-75"
-                    >
-                        <span class="font-medium text-base leading-tight"
-                            >Kevin Stevino Arnovan</span
-                        >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-gpp-muted flex-shrink-0 ml-2"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            ><path
-                                fill-rule="evenodd"
-                                d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
-                                clip-rule="evenodd"></path></svg
-                        >
+                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
+                    Audio
+                </h3>
+                <ul class="space-y-3">
+                    <li class="text-gpp-text/80 font-medium">Rafi Andika</li>
+                    <li class="text-gpp-text/80 font-medium">
+                        Kevin Stevino Arnovan
                     </li>
                 </ul>
             </div>

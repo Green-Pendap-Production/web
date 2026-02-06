@@ -1,0 +1,136 @@
+---
+
+---
+
+<div
+    class="absolute inset-0 overflow-hidden pointer-events-none select-none z-0"
+>
+    <div class="absolute inset-0 opacity-[0.03] pattern-grid"></div>
+
+    <!-- Floating Icons Container -->
+    <div class="absolute inset-0">
+        <!-- Leaf 1 (Top Left) -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute top-10 left-[10%] w-24 h-24 text-gpp-primary opacity-10 animate-float-slow"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+        >
+            <path
+                d="M17.457 15.632L19.457 21L15.457 14.132C13.457 14.132 12.0001 10 11.0001 2C11.0001 2 5.00009 13 2.00009 15.0001C5.00009 15.0001 9.00009 14.0001 12.0001 11.0001C11.6661 14.5001 13.9161 17.5001 17.457 15.632Z"
+            ></path>
+        </svg>
+
+        <!-- Game Controller (Top Right) -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute top-20 right-[15%] w-32 h-32 text-gpp-accent opacity-5 animate-float-delayed"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+        >
+            <path
+                d="M17,2H7C3.1,2,0,5.1,0,9v2c0,3.9,3.1,7,7,7h2v-2H7c-2.8,0-5-2.2-5-5s2.2-5,5-5h10c2.8,0,5,2.2,5,5 s-2.2,5-5,5h-2v2h2c3.9,0,7-3.1,7-7V9C24,5.1,20.9,2,17,2z M7,10c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2S8.1,10,7,10z M11,4h2v5 h-2V4z M17,10c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2S18.1,10,17,10z"
+            ></path>
+        </svg>
+
+        <!-- Code Bracket (Bottom Left) -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute bottom-20 left-[5%] w-28 h-28 text-gpp-primary opacity-10 animate-float-reverse"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+
+        <!-- Leaf 2 (Bottom Right) -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute bottom-10 right-[10%] w-20 h-20 text-gpp-accent opacity-10 animate-float-spin"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+        >
+            <path
+                d="M21,12c0-4.9-3.3-8.8-8-9.8V21C17.7,20.8,21,16.9,21,12z M5.5,14c0.8,0,1.5-0.7,1.5-1.5S6.3,11,5.5,11S4,11.7,4,12.5 S4.7,14,5.5,14z M8,12c0,2.2-1.8,4-4,4s-4-1.8-4-4s1.8-4,4-4S8,9.8,8,12z M11,2.2C6.3,3.2,3,7.1,3,12h2.1c0.5-2.3,2.5-4,4.9-4V2.2z"
+            ></path>
+        </svg>
+
+        <!-- Abstract Circle (Centerish) -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border border-gpp-primary/5 animate-pulse-slow pointer-events-none"
+        >
+        </div>
+        <div
+            class="absolute top-[40%] left-[60%] w-64 h-64 rounded-full border border-gpp-accent/5 animate-pulse-slow animation-delay-1000 pointer-events-none"
+        >
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(5deg);
+        }
+    }
+
+    @keyframes float-reverse {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(20px) rotate(-5deg);
+        }
+    }
+
+    @keyframes float-spin {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-15px) rotate(10deg);
+        }
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+    }
+
+    .animate-float-slow {
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float 7s ease-in-out infinite 1s;
+    }
+
+    .animate-float-reverse {
+        animation: float-reverse 9s ease-in-out infinite;
+    }
+
+    .animate-float-spin {
+        animation: float-spin 10s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animation-delay-1000 {
+        animation-delay: 1s;
+    }
+
+    .pattern-grid {
+        background-image: radial-gradient(currentColor 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+</style>
