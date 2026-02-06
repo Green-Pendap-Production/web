@@ -3,12 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import HeroBackground from "../components/HeroBackground.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
+import TeamTree from "../components/TeamTree.astro";
 
 const allGames = [
     {
         title: "Bantal Battle",
         genre: "Competitive",
-        // image placeholder
         image: "/image.png",
         year: "2026",
     },
@@ -131,85 +131,8 @@ const allGames = [
             Our Team
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Management -->
-            <div
-                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
-                    Management
-                </h3>
-                <ul class="space-y-3">
-                    <li class="text-gpp-text/80 font-medium">
-                        Abdul Vaiz Vahry Iskandar
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Muhammad Yusuf Alfarabi
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Kevin Stevino Arnovan
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Programming -->
-            <div
-                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
-                    Programming
-                </h3>
-                <ul class="space-y-3">
-                    <li class="text-gpp-text/80 font-medium">
-                        Rifqi Reis Ramadhan
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Abdul Vaiz Vahry Iskandar
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Muhammad Yusuf Alfarabi
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Design -->
-            <div
-                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
-                    Design
-                </h3>
-                <ul class="space-y-3">
-                    <li class="text-gpp-text/80 font-medium">
-                        Atiqah Najla Fadhilah Rachman
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Muhamad Gazril Alfarizi
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Zora Ghaziyah Wanie
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Zahra Alifia Anshori
-                    </li>
-                    <li class="text-gpp-text/80 font-medium">Kaysa Naura</li>
-                </ul>
-            </div>
-
-            <!-- Audio -->
-            <div
-                class="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-                <h3 class="text-2xl font-heading text-gpp-primary mb-6">
-                    Audio
-                </h3>
-                <ul class="space-y-3">
-                    <li class="text-gpp-text/80 font-medium">Rafi Andika</li>
-                    <li class="text-gpp-text/80 font-medium">
-                        Kevin Stevino Arnovan
-                    </li>
-                </ul>
-            </div>
+        <div class="w-full overflow-x-auto">
+            <TeamTree />
         </div>
     </section>
 
