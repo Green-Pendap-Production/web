@@ -1,0 +1,142 @@
+---
+interface Props {
+    images: string[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="relative group w-full">
+    <!-- Decorative Frame -->
+    <div
+        class="absolute -inset-2 bg-gpp-accent/20 rounded-3xl rotate-1 group-hover:rotate-2 transition-transform duration-500 z-0"
+    >
+    </div>
+
+    <!-- Carousel Container -->
+    <div
+        class="relative rounded-2xl overflow-hidden shadow-xl z-10 bg-gpp-bg aspect-video"
+    >
+        <div
+            id="carousel-scroll"
+            class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full w-full scroll-smooth"
+        >
+            {
+                images.map((img, index) => (
+                    <div class="shrink-0 w-full h-full snap-center relative">
+                        <img
+                            src={img}
+                            alt={`Team Photo ${index + 1}`}
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            loading="lazy"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Navigation Dots -->
+        <div
+            class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 pointer-events-none"
+        >
+            {
+                images.map((_, index) => (
+                    <button
+                        class="w-2 h-2 rounded-full bg-white/50 backdrop-blur-sm pointer-events-auto transition-all duration-300 hover:bg-gpp-accent focus:bg-gpp-accent data-[active=true]:bg-gpp-accent data-[active=true]:scale-125 shadow-sm"
+                        aria-label={`Go to slide ${index + 1}`}
+                        data-index={index}
+                    />
+                ))
+            }
+        </div>
+
+        <!-- Navigation Arrows (Desktop) -->
+        <button
+            class="absolute top-1/2 left-4 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 pointer-events-auto text-white"
+            id="prev-btn"
+            aria-label="Previous Slide"
+        >
+            &larr;
+        </button>
+        <button
+            class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 pointer-events-auto text-white"
+            id="next-btn"
+            aria-label="Next Slide"
+        >
+            &rarr;
+        </button>
+    </div>
+</div>
+
+<style>
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+</style>
+
+<script>
+    const scrollContainer = document.getElementById("carousel-scroll");
+    const dots = document.querySelectorAll("button[data-index]");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    if (scrollContainer && dots.length > 0) {
+        // Update active dot on scroll
+        const updateActiveDot = () => {
+            const scrollLeft = scrollContainer.scrollLeft;
+            const width = scrollContainer.offsetWidth;
+            const index = Math.round(scrollLeft / width);
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.setAttribute("data-active", "true");
+                } else {
+                    dot.setAttribute("data-active", "false");
+                }
+            });
+        };
+
+        scrollContainer.addEventListener("scroll", updateActiveDot);
+        window.addEventListener("resize", updateActiveDot); // Handle resize re-centering issues partially
+        updateActiveDot(); // Initial state
+
+        // Dot Click Navigation
+        dots.forEach((dot) => {
+            dot.addEventListener("click", (e) => {
+                const target = e.target as HTMLElement;
+                const index = parseInt(target.dataset.index || "0");
+                const width = scrollContainer.offsetWidth;
+                scrollContainer.scrollTo({
+                    left: index * width,
+                    behavior: "smooth",
+                });
+            });
+        });
+
+        // Arrow Navigation
+        if (prevBtn) {
+            prevBtn.addEventListener("click", () => {
+                scrollContainer.scrollBy({
+                    left: -scrollContainer.offsetWidth,
+                    behavior: "smooth",
+                });
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+                scrollContainer.scrollBy({
+                    left: scrollContainer.offsetWidth,
+                    behavior: "smooth",
+                });
+            });
+        }
+    }
+</script>

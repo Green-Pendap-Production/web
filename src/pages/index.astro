@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import HeroBackground from "../components/HeroBackground.astro";
+import ImageCarousel from "../components/ImageCarousel.astro";
 
 const allGames = [
     {
@@ -116,16 +117,8 @@ const allGames = [
                 of mystery and flavor.
             </p>
 
-            <div class="relative group mt-12 w-full">
-                <div
-                    class="absolute -inset-2 bg-gpp-accent/20 rounded-3xl rotate-1 group-hover:rotate-2 transition-transform duration-500"
-                >
-                </div>
-                <img
-                    src="/hero.jpeg"
-                    alt="Green Pendap Team Discussion"
-                    class="relative w-full rounded-2xl shadow-xl grayscale hover:grayscale-0 transition-all duration-700 object-cover aspect-video"
-                />
+            <div class="mt-12 w-full">
+                <ImageCarousel images={["/hero.jpeg", "/we.jpeg"]} />
             </div>
         </div>
     </section>
