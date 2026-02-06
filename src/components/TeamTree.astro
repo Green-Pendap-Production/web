@@ -52,9 +52,9 @@ const teamData = {
                     >
                     {
                         teamData.members && (
-                            <div class="border-t border-gpp-primary/10 pt-2 mt-2">
+                            <div class="border-t border-gpp-primary/40 pt-2 mt-2 divide-y divide-gpp-primary/20">
                                 {teamData.members.map((member) => (
-                                    <div class="text-sm font-medium text-gpp-text/80">
+                                    <div class="text-sm font-medium text-gpp-text/80 py-1">
                                         {member}
                                     </div>
                                 ))}
@@ -71,9 +71,9 @@ const teamData = {
                                         {producer.name}
                                     </span>
                                     {producer.members && (
-                                        <div class="border-t border-gpp-accent/10 pt-1 mt-1">
+                                        <div class="border-t border-gpp-accent/40 pt-1 mt-1 divide-y divide-gpp-accent/20">
                                             {producer.members.map((member) => (
-                                                <div class="text-sm font-medium text-gpp-text/80">
+                                                <div class="text-sm font-medium text-gpp-text/80 py-1">
                                                     {member}
                                                 </div>
                                             ))}
@@ -88,10 +88,10 @@ const teamData = {
                                                     {dept.name}
                                                 </span>
                                                 {dept.children && (
-                                                    <div class="flex flex-col gap-1 border-t border-gpp-primary/10 pt-2">
+                                                    <div class="flex flex-col gap-1 border-t border-gpp-primary/40 pt-2 divide-y divide-gpp-primary/20">
                                                         {dept.children.map(
                                                             (member) => (
-                                                                <div class="text-sm font-medium text-gpp-text/80">
+                                                                <div class="text-sm font-medium text-gpp-text/80 py-1">
                                                                     {
                                                                         member.name
                                                                     }
