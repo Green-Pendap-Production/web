@@ -5,11 +5,17 @@ import HeroBackground from "../components/HeroBackground.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
 import TeamTree from "../components/TeamTree.astro";
 
+// Import images
+import bantalBattleImage from "../assets/image.png";
+import heroImage from "../assets/hero.jpeg";
+import weImage from "../assets/we.jpeg";
+import satu from "../assets/bg/1.jpeg";
+
 const allGames = [
     {
         title: "Bantal Battle",
         genre: "Competitive",
-        image: "/image.png",
+        image: bantalBattleImage,
         year: "2026",
     },
 ];
@@ -118,7 +124,7 @@ const allGames = [
             </p>
 
             <div class="mt-12 w-full">
-                <ImageCarousel images={["/hero.jpeg", "/we.jpeg"]} />
+                <ImageCarousel images={[heroImage, weImage, satu]} />
             </div>
         </div>
     </section>
