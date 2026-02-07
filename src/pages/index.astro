@@ -23,65 +23,69 @@ const allGames = [
 
 <Layout title="Green Pendap Production">
     <!-- Hero Section -->
+    <!-- Hero Section -->
     <section
         id="home"
-        class="min-h-[svh] flex flex-col justify-center items-start mb-12 md:mb-24 relative overflow-hidden"
+        class="min-h-[svh] flex flex-col justify-center mb-12 md:mb-24 relative overflow-hidden"
     >
-        <HeroBackground />
+        <HeroBackground src={heroImage} />
 
-        <div class="relative z-10 pointer-events-none mt-50">
-            <!-- Content Container -->
-            <span
-                class="text-gpp-accent font-mono tracking-[0.2em] uppercase mb-6 block text-sm md:text-base font-bold"
-                >GREEN PENDAP INTRODUCING</span
-            >
-            <h1
-                class="text-5xl md:text-7xl lg:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
-            >
+        <div
+            class="relative z-10 pointer-events-none mt-20 lg:mt-0 container mx-auto px-4 h-full flex flex-col justify-center"
+        >
+            <div class="flex flex-col items-start max-w-5xl">
                 <span
-                    class="relative group inline-block cursor-default pointer-events-auto"
+                    class="text-gpp-accent font-mono tracking-[0.2em] uppercase mb-6 block text-sm md:text-base font-bold"
+                    >GREEN PENDAP INTRODUCING</span
+                >
+                <h1
+                    class="text-5xl md:text-7xl lg:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
                 >
                     <span
-                        class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                    ></span>
-                    <span
-                        class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-                        >OUR GAME</span
+                        class="relative group inline-block cursor-default pointer-events-auto"
                     >
-                </span>
-                <span
-                    class="relative group inline-block cursor-default pointer-events-auto"
-                >
+                        <span
+                            class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                            >OUR GAME</span
+                        >
+                    </span>
                     <span
-                        class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                    ></span>
-                    <span
-                        class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-                        >IS MADE</span
+                        class="relative group inline-block cursor-default pointer-events-auto"
                     >
-                </span>
-                <span
-                    class="relative group inline-block cursor-default pointer-events-auto"
-                >
+                        <span
+                            class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                            >IS MADE</span
+                        >
+                    </span>
                     <span
-                        class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                    ></span>
-                    <span
-                        class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
-                        >OF LOVE</span
+                        class="relative group inline-block cursor-default pointer-events-auto"
                     >
-                </span>
-            </h1>
-            <a
-                href="#games"
-                class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
-            >
-                View Our Work
-                <span
-                    class="group-hover:translate-x-1 transition-transform duration-300"
-                    >&darr;</span
+                        <span
+                            class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
+                            >OF LOVE</span
+                        >
+                    </span>
+                </h1>
+                <a
+                    href="#games"
+                    class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
                 >
-            </a>
+                    View Our Work
+                    <span
+                        class="group-hover:translate-x-1 transition-transform duration-300"
+                        >&darr;</span
+                    >
+                </a>
+            </div>
         </div>
     </section>
 
