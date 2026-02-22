@@ -1,33 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-    /* Fonts */
-    --font-heading: 'DM Serif Display', serif;
-    --font-body: 'Inter', sans-serif;
+  /* Fonts */
+  --font-heading: "DM Serif Display", serif;
+  --font-body: "Inter", sans-serif;
 
-    /* Green Pendap Color Palette */
-    --color-gpp-primary: #2F4F2F;
-    /* Deep Forest Green */
-    --color-gpp-accent: #8B5A2B;
-    /* Earth Brown */
-    --color-gpp-bg: #F4F4F0;
-    /* Off-White / Paper */
-    --color-gpp-text: #1A1A1A;
-    /* Soft Black */
-    --color-gpp-muted: #888888;
-    /* Gray text */
+  /* Green Pendap Color Palette */
+  --color-gpp-primary: #2f4f2f;
+  /* Deep Forest Green */
+  --color-gpp-accent: #8b5a2b;
+  /* Earth Brown */
+  --color-gpp-bg: #f4f4f0;
+  /* Off-White / Paper */
+  --color-gpp-text: #1a1a1a;
+  /* Soft Black */
+  --color-gpp-muted: #888888;
+  /* Gray text */
 }
 
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap");
 
-html,
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
 body {
-    font-family: var(--font-body);
-    background-color: var(--color-gpp-bg);
-    color: var(--color-gpp-text);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--color-gpp-bg);
+  color: var(--color-gpp-text);
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  min-width: 0;
 }
 
 h1,
@@ -36,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-heading);
-    font-weight: 400;
-    /* Serif often looks better with normal weight */
+  font-family: var(--font-heading);
+  font-weight: 400;
+  /* Serif often looks better with normal weight */
 }
