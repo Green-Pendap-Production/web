@@ -12,154 +12,156 @@ import weImage from "../assets/we.jpeg";
 import satu from "../assets/bg/1.jpeg";
 
 const allGames = [
-  {
-    title: "Bantal Battle",
-    genre: "Competitive",
-    image: bantalBattleImage,
-    year: "2026",
-  },
+    {
+        title: "Pillow Fight",
+        genre: "Competitive",
+        image: bantalBattleImage,
+        year: "2026",
+    },
 ];
 ---
 
 <Layout title="Green Pendap Production">
-  <!-- Hero Section -->
-  <section
-    id="home"
-    class="min-h-[svh] flex flex-col justify-center mb-12 md:mb-24 relative overflow-hidden"
-  >
-    <HeroBackground src={heroImage} />
-
-    <div
-      class="relative z-10 pointer-events-none mt-20 lg:mt-0 container mx-auto px-4 h-full flex flex-col justify-center"
+    <!-- Hero Section -->
+    <section
+        id="home"
+        class="min-h-[svh] flex flex-col justify-center mb-12 md:mb-24 relative overflow-hidden"
     >
-      <div class="flex flex-col items-start max-w-5xl">
-        <h1
-          class="text-5xl md:text-7xl lg:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
+        <HeroBackground src={heroImage} />
+
+        <div
+            class="relative z-10 pointer-events-none mt-20 lg:mt-0 container mx-auto px-4 h-full flex flex-col justify-center"
         >
-          <span
-            class="relative group inline-block cursor-default pointer-events-auto"
-          >
-            <span
-              class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-            ></span>
-            <span
-              class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-              >OUR GAME</span
-            >
-          </span>
-          <span
-            class="relative group inline-block cursor-default pointer-events-auto"
-          >
-            <span
-              class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-            ></span>
-            <span
-              class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-              >IS MADE</span
-            >
-          </span>
-          <span
-            class="relative group inline-block cursor-default pointer-events-auto"
-          >
-            <span
-              class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-            ></span>
-            <span
-              class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
-              >OF LOVE</span
-            >
-          </span>
-        </h1>
-        <a
-          href="#games"
-          class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
-        >
-          View Our Work
-          <span
-            class="group-hover:translate-x-1 transition-transform duration-300"
-            >&darr;</span
-          >
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Games Section -->
-  <section id="games" class="mb-32 pt-16">
-    <h2
-      class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
-    >
-      Selected Works
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-      {allGames.map((game) => <ProjectCard {...game} />)}
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section
-    id="about"
-    class="mb-32 pt-16 grid grid-cols-1 md:grid-cols-12 gap-12"
-  >
-    <div class="col-span-12 md:col-span-4">
-      <h2
-        class="text-4xl font-heading text-gpp-primary mb-6 border-b border-gpp-text/10 pb-4"
-      >
-        Our Studio
-      </h2>
-    </div>
-    <div class="col-span-12 md:col-span-8 space-y-8 text-lg leading-relaxed">
-      <p class="text-2xl font-serif italic text-gpp-accent">
-        Founded in 2025 in the heart of Bengkulu, Indonesia.
-      </p>
-      <p>
-        We are a diverse team of artists, programmers, and storytellers who
-        believe in the power of interactive media. Like the <span
-          class="text-gpp-primary font-bold">Pendap</span
-        > a traditional dish wrapped in leaves our games are wrapped in layers of
-        mystery and flavor.
-      </p>
-
-      <div class="mt-12 w-full">
-        <ImageCarousel images={[heroImage, weImage, satu]} />
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="mb-32">
-    <h2
-      class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
-    >
-      Our Team
-    </h2>
-
-    <div class="w-full overflow-x-auto">
-      <TeamTree />
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section
-    id="contact"
-    class="min-h-[50vh] pt-16 bg-gpp-primary text-gpp-bg -mx-6 px-6 md:-mx-12 md:px-12 pb-12 flex flex-col justify-between rounded-t-3xl mt-24"
-  >
-    <div>
-      <h2 class="text-6xl font-heading mb-12 opacity-90">Let's Talk</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h3
-            class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
-          >
-            General Inquiries
-          </h3>
-          <a
-            href="mailto:contact@greenpendap.com"
-            class="text-2xl hover:underline decoration-gpp-accent underline-offset-4"
-            >greenpendapi@gmail.com
-          </a>
+            <div class="flex flex-col items-start max-w-5xl">
+                <h1
+                    class="text-5xl md:text-7xl lg:text-9xl font-heading text-gpp-primary leading-[0.9] mb-10 tracking-tighter drop-shadow-sm flex flex-col items-start"
+                >
+                    <span
+                        class="relative group inline-block cursor-default pointer-events-auto"
+                    >
+                        <span
+                            class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                            >OUR GAME</span
+                        >
+                    </span>
+                    <span
+                        class="relative group inline-block cursor-default pointer-events-auto"
+                    >
+                        <span
+                            class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
+                            >IS MADE</span
+                        >
+                    </span>
+                    <span
+                        class="relative group inline-block cursor-default pointer-events-auto"
+                    >
+                        <span
+                            class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
+                        ></span>
+                        <span
+                            class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
+                            >OF LOVE</span
+                        >
+                    </span>
+                </h1>
+                <a
+                    href="#games"
+                    class="inline-flex items-center gap-2 border-b-2 border-gpp-primary pb-1 hover:text-gpp-accent hover:border-gpp-accent transition-all duration-300 font-bold text-lg pointer-events-auto group"
+                >
+                    View Our Work
+                    <span
+                        class="group-hover:translate-x-1 transition-transform duration-300"
+                        >&darr;</span
+                    >
+                </a>
+            </div>
         </div>
-        <!-- <div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="mb-32 pt-16">
+        <h2
+            class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
+        >
+            Selected Works
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+            {allGames.map((game) => <ProjectCard {...game} />)}
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section
+        id="about"
+        class="mb-32 pt-16 grid grid-cols-1 md:grid-cols-12 gap-12"
+    >
+        <div class="col-span-12 md:col-span-4">
+            <h2
+                class="text-4xl font-heading text-gpp-primary mb-6 border-b border-gpp-text/10 pb-4"
+            >
+                Our Studio
+            </h2>
+        </div>
+        <div
+            class="col-span-12 md:col-span-8 space-y-8 text-lg leading-relaxed"
+        >
+            <p class="text-2xl font-serif italic text-gpp-accent">
+                Founded in 2025 in the heart of Bengkulu, Indonesia.
+            </p>
+            <p>
+                We are a diverse team of artists, programmers, and storytellers
+                who believe in the power of interactive media. Like the <span
+                    class="text-gpp-primary font-bold">Pendap</span
+                > a traditional dish wrapped in leaves our games are wrapped in layers
+                of mystery and flavor.
+            </p>
+
+            <div class="mt-12 w-full">
+                <ImageCarousel images={[heroImage, weImage, satu]} />
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="mb-32">
+        <h2
+            class="text-4xl font-heading text-gpp-primary mb-12 border-b border-gpp-text/10 pb-4"
+        >
+            Our Team
+        </h2>
+
+        <div class="w-full overflow-x-auto">
+            <TeamTree />
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+        id="contact"
+        class="min-h-[50vh] pt-16 bg-gpp-primary text-gpp-bg -mx-6 px-6 md:-mx-12 md:px-12 pb-12 flex flex-col justify-between rounded-t-3xl mt-24"
+    >
+        <div>
+            <h2 class="text-6xl font-heading mb-12 opacity-90">Let's Talk</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3
+                        class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
+                    >
+                        General Inquiries
+                    </h3>
+                    <a
+                        href="mailto:contact@greenpendap.com"
+                        class="text-2xl hover:underline decoration-gpp-accent underline-offset-4"
+                        >greenpendapi@gmail.com
+                    </a>
+                </div>
+                <!-- <div>
                     <h3
                         class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
                     >
@@ -171,19 +173,20 @@ const allGames = [
                         >jobs@greenpendap.com</a
                     >
                 </div> -->
-      </div>
-    </div>
+            </div>
+        </div>
 
-    <div
-      class="mt-24 flex justify-between items-end border-t border-white/20 pt-8"
-    >
-      <p class="text-sm opacity-50">
-        &copy; 2025 Green Pendap Production. All rights reserved.
-      </p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-gpp-accent transition-colors">Instagram</a
+        <div
+            class="mt-24 flex justify-between items-end border-t border-white/20 pt-8"
         >
-      </div>
-    </div>
-  </section>
+            <p class="text-sm opacity-50">
+                &copy; 2025 Green Pendap Production. All rights reserved.
+            </p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gpp-accent transition-colors"
+                    >Instagram</a
+                >
+            </div>
+        </div>
+    </section>
 </Layout>
