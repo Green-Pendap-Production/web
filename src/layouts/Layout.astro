@@ -30,11 +30,12 @@ const {
     <Sidebar />
     <!-- Main Content Area with left margin to accommodate fixed sidebar -->
     <main
-      class="w-full overflow-x-hidden ml-0 md:ml-64 px-4 min-h-screen md:mr-72 mr-0 mt-16 md:mt-0"
+      class="w-full overflow-x-hidden ml-0 md:ml-64 min-h-screen md:mr-72 mr-0 mt-16 md:mt-0"
     >
-      <slot />
+      <div class="px-4">
+        <slot />
+      </div>
       <Footer />
-    
     </main>
   </body>
 </html>
