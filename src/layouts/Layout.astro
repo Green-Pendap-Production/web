@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
 import MobileHeader from "../components/MobileHeader.astro";
 
 interface Props {
@@ -29,9 +30,11 @@ const {
     <Sidebar />
     <!-- Main Content Area with left margin to accommodate fixed sidebar -->
     <main
-      class="grow min-w-0 w-full overflow-x-hidden ml-0 md:ml-64 px-4 py-6 sm:p-6 md:p-12 min-h-screen mt-16 md:mt-0"
+      class="w-full overflow-x-hidden ml-0 md:ml-64 px-4 min-h-screen md:mr-72 mr-0 mt-16 md:mt-0"
     >
       <slot />
+      <Footer />
+    
     </main>
   </body>
 </html>

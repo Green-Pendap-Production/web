@@ -1,306 +1,87 @@
 ---
 const teamData = {
-    name: "Management Team",
+    name: "Management",
     members: [
         "Abdul Vaiz Vahry Iskandar",
         "Muhammad Yusuf Alfarabi",
         "Kevin Stevino Arnovan",
+        "Zora Ghaziyah Wanie",
     ],
-    children: [
+    departments: [
         {
-            name: "Producer",
-            members: ["Zora Ghaziyah Wanie"],
-            children: [
-                {
-                    name: "Programming",
-                    children: [
-                        { name: "Rifqi Reis Ramadhan" },
-                        { name: "Abdul Vaiz Vahry Iskandar" },
-                        { name: "Muhammad Yusuf Alfarabi" },
-                    ],
-                },
-                {
-                    name: "2D Designer",
-                    children: [
-                        { name: "Atiqah Najla Fadhilah Rachman" },
-                        { name: "Zahra Alifia Anshori" },
-                        { name: "Kaysa Naura" },
-                        { name: "Haekal Abdillah Ramadhan" },
-                    ],
-                },
-                {
-                    name: "3D Designer",
-                    children: [
-                        { name: "Muhamad Gazril Alfarizi" },
-                        { name: "Zora Ghaziyah Wanie" },
-                    ],
-                },
-                {
-                    name: "Audio",
-                    children: [
-                        { name: "Rafi Andika" },
-                        { name: "Kevin Stevino Arnovan" },
-                    ],
-                },
+            name: "Programming",
+            members: [
+                "Rifqi Reis Ramadhan",
+                "Abdul Vaiz Vahry Iskandar",
+                "Muhammad Yusuf Alfarabi",
             ],
+        },
+        {
+            name: "2D Design",
+            members: [
+                "Atiqah Najla Fadhilah Rachman",
+                "Zahra Alifia Anshori",
+                "Kaysa Naura",
+                "Haekal Abdillah Ramadhan",
+            ],
+        },
+        {
+            name: "3D Design",
+            members: ["Muhamad Gazril Alfarizi", "Zora Ghaziyah Wanie"],
+        },
+        {
+            name: "Audio",
+            members: ["Rafi Andika", "Kevin Stevino Arnovan"],
         },
     ],
 };
 ---
 
-<!-- ===== MOBILE LAYOUT (stacked cards) ===== -->
-<div class="md:hidden flex flex-col gap-4">
-    <!-- Root / Management -->
-    <div
-        class="rounded-xl border border-gpp-primary/20 bg-gpp-primary/5 p-4"
-    >
-        <span class="font-heading text-lg text-gpp-primary block mb-2"
-            >{teamData.name}</span
+<div class="team-container w-full mt-8">
+    <!-- Management -->
+    <div class="team-category mb-16">
+        <h3
+            class="text-2xl md:text-3xl font-heading text-gpp-primary mb-6 border-b-4 border-gpp-primary pb-2 uppercase tracking-wide inline-block"
         >
-        <div
-            class="border-t border-gpp-primary/20 pt-2 mt-1 flex flex-col gap-1"
-        >
+            {teamData.name}
+        </h3>
+        <ul class="flex flex-col w-full">
             {
-                teamData.members?.map((m) => (
-                    <span class="text-sm text-gpp-text/80">{m}</span>
+                teamData.members.map((member) => (
+                    <li class="group border-b border-gpp-text/20 py-5 hover:border-gpp-primary transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
+                        <span class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
+                        <span class="text-lg md:text-xl font-medium text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex justify-between items-center px-4">
+                            {member}
+                            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-heading text-gpp-bg">
+                                MGT
+                            </span>
+                        </span>
+                    </li>
                 ))
             }
-        </div>
-    </div>
-
-    <!-- Producer row -->
-    {
-        teamData.children.map((producer) => (
-            <div class="flex flex-col gap-3 pl-4 border-l-2 border-gpp-accent/30">
-                <div class="rounded-xl border border-gpp-accent/20 bg-gpp-accent/5 p-4">
-                    <span class="font-heading text-lg text-gpp-accent block mb-1">
-                        {producer.name}
-                    </span>
-                    {producer.members && (
-                        <div class="border-t border-gpp-accent/20 pt-2 mt-1 flex flex-col gap-1">
-                            {producer.members.map((m) => (
-                                <span class="text-sm text-gpp-text/80">
-                                    {m}
-                                </span>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                <!-- Department cards grid: 2 cols on small, 1 col on very small -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-4 border-l-2 border-gpp-primary/20">
-                    {producer.children.map((dept) => (
-                        <div class="rounded-xl border border-gpp-primary/10 bg-white/60 p-4">
-                            <span class="font-heading text-base text-gpp-primary block mb-2">
-                                {dept.name}
-                            </span>
-                            {dept.children && (
-                                <div class="border-t border-gpp-primary/15 pt-2 flex flex-col gap-0.5">
-                                    {dept.children.map((member) => (
-                                        <span class="text-sm text-gpp-text/75 py-0.5">
-                                            {member.name}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        ))
-    }
-</div>
-
-<!-- ===== DESKTOP LAYOUT (classic tree) ===== -->
-<div
-    class="team-tree-container hidden md:block w-full overflow-x-auto pb-12 box-border max-w-full"
->
-    <div class="tree max-w-full">
-        <ul>
-            <li>
-                <div class="node-card root-node group">
-                    <span
-                        class="font-heading text-xl text-gpp-primary block mb-2"
-                        >{teamData.name}</span
-                    >
-                    {
-                        teamData.members && (
-                            <div class="border-t border-gpp-primary/40 pt-2 mt-2 divide-y divide-gpp-primary/20">
-                                {teamData.members.map((member) => (
-                                    <div class="text-sm font-medium text-gpp-text/80 py-1">
-                                        {member}
-                                    </div>
-                                ))}
-                            </div>
-                        )
-                    }
-                </div>
-                <ul>
-                    {
-                        teamData.children.map((producer) => (
-                            <li>
-                                <div class="node-card producer-node">
-                                    <span class="font-heading text-lg text-gpp-accent block mb-1">
-                                        {producer.name}
-                                    </span>
-                                    {producer.members && (
-                                        <div class="border-t border-gpp-accent/40 pt-1 mt-1 divide-y divide-gpp-accent/20">
-                                            {producer.members.map((member) => (
-                                                <div class="text-sm font-medium text-gpp-text/80 py-1">
-                                                    {member}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                                <ul>
-                                    {producer.children.map((dept) => (
-                                        <li>
-                                            <div class="node-card dept-node">
-                                                <span class="font-heading text-lg text-gpp-primary block mb-3">
-                                                    {dept.name}
-                                                </span>
-                                                {dept.children && (
-                                                    <div class="flex flex-col gap-1 border-t border-gpp-primary/40 pt-2 divide-y divide-gpp-primary/20">
-                                                        {dept.children.map(
-                                                            (member) => (
-                                                                <div class="text-sm font-medium text-gpp-text/80 py-1">
-                                                                    {
-                                                                        member.name
-                                                                    }
-                                                                </div>
-                                                            ),
-                                                        )}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </li>
         </ul>
     </div>
+
+    <!-- Departments -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        {
+            teamData.departments.map((dept) => (
+                <div class="team-category">
+                    <h3 class="text-lg md:text-xl font-heading text-gpp-accent mb-4 border-b-2 border-gpp-accent pb-2 uppercase tracking-wide inline-block">
+                        {dept.name}
+                    </h3>
+                    <ul class="flex flex-col">
+                        {dept.members.map((member) => (
+                            <li class="group border-b border-gpp-text/10 py-4 hover:border-gpp-accent transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
+                                <span class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
+                                <span class="text-lg md:text-xl text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex justify-between items-center px-4">
+                                    {member}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </div>
 </div>
-
-<style>
-    /* 
-     * CSS Tree Diagram Style — Desktop only
-     */
-    .tree {
-        width: fit-content;
-        margin: 0 auto;
-    }
-
-    .tree ul {
-        padding-top: 20px;
-        position: relative;
-        transition: all 0.5s;
-        display: flex;
-        justify-content: center;
-    }
-
-    .tree li {
-        float: left;
-        text-align: center;
-        list-style-type: none;
-        position: relative;
-        padding: 20px 5px 0 5px;
-        transition: all 0.5s;
-    }
-
-    /* Connections */
-    .tree li::before,
-    .tree li::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 50%;
-        border-top: 2px solid rgba(var(--color-gpp-text), 0.8);
-        width: 50%;
-        height: 20px;
-    }
-
-    .tree li::after {
-        right: auto;
-        left: 50%;
-        border-left: 2px solid rgba(var(--color-gpp-text), 0.8);
-    }
-
-    .tree li:only-child::after,
-    .tree li:only-child::before {
-        display: none;
-    }
-
-    .tree li:only-child {
-        padding-top: 0;
-    }
-
-    .tree li:first-child::before,
-    .tree li:last-child::after {
-        border: 0 none;
-    }
-
-    .tree li:last-child::before {
-        border-right: 2px solid rgba(var(--color-gpp-text), 0.8);
-        border-radius: 0 5px 0 0;
-    }
-
-    .tree li:first-child::after {
-        border-radius: 5px 0 0 0;
-    }
-
-    .tree ul ul::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        border-left: 2px solid rgba(var(--color-gpp-text), 0.8);
-        width: 0;
-        height: 20px;
-    }
-
-    /* Node Card Styling */
-    .node-card {
-        padding: 12px 16px;
-        text-decoration: none;
-        color: #666;
-        display: inline-block;
-        border-radius: 12px;
-        transition: all 0.3s;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        min-width: 120px;
-    }
-
-    .node-card:hover {
-        background: white;
-        border-color: rgba(var(--color-gpp-primary), 0.3);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
-
-    .root-node {
-        background: rgba(var(--color-gpp-primary), 0.1);
-        border-color: rgba(var(--color-gpp-primary), 0.2);
-        min-width: 250px;
-    }
-
-    .producer-node {
-        background: rgba(var(--color-gpp-accent), 0.1);
-        border-color: rgba(var(--color-gpp-accent), 0.2);
-        min-width: 200px;
-    }
-
-    .dept-node {
-        background: rgba(255, 255, 255, 0.8);
-        border-color: rgba(var(--color-gpp-primary), 0.1);
-        font-weight: bold;
-    }
-</style>

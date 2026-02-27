@@ -3,13 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import HeroBackground from "../components/HeroBackground.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
+import Progress from "../components/Progress.astro";
 import TeamTree from "../components/TeamTree.astro";
+import Footer from "../components/Footer.astro";
 
 // Import images
 import bantalBattleImage from "../assets/image.png";
 import heroImage from "../assets/hero.jpeg";
 import weImage from "../assets/we.jpeg";
 import satu from "../assets/bg/1.jpeg";
+import dua from "../assets/bg/2.jpeg";
 
 const allGames = [
     {
@@ -17,6 +20,30 @@ const allGames = [
         genre: "Competitive",
         image: bantalBattleImage,
         year: "2026",
+    },
+];
+
+const progressItems = [
+    {
+        title: "Combat Mechanics Prototype",
+        date: "MAR 2026",
+        image: bantalBattleImage,
+        description:
+            "Iterating on core combat responsiveness and hit-stop effects for our latest project.",
+    },
+    {
+        title: "Environment Art Preview",
+        date: "FEB 2026",
+        image: satu,
+        description:
+            "Initial look at the lush, hand-painted backgrounds inspired by Bengkulu's landscapes.",
+    },
+    {
+        title: "Character Animation Refinement",
+        date: "JAN 2026",
+        image: dua,
+        description:
+            "Polishing character movement and secondary animations to add more life to the world.",
     },
 ];
 ---
@@ -128,70 +155,38 @@ const allGames = [
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="mb-16 md:mb-32">
-        <h2
-            class="text-3xl md:text-4xl font-heading text-gpp-primary mb-8 md:mb-12 border-b border-gpp-text/10 pb-4"
-        >
-            Our Team
-        </h2>
-
-        <div class="w-full overflow-x-auto">
-            <TeamTree />
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section
-        id="contact"
-        class="min-h-[50vh] pt-10 md:pt-16 bg-gpp-primary text-gpp-bg -mx-4 px-4 sm:-mx-6 sm:px-6 md:-mx-12 md:px-12 pb-12 flex flex-col justify-between rounded-t-2xl md:rounded-t-3xl mt-12 md:mt-24"
-    >
-        <div>
-            <h2
-                class="text-4xl md:text-6xl font-heading mb-8 md:mb-12 opacity-90"
-            >
-                Let's Talk
+    <!-- Progress Section -->
+    <section id="progress" class="mb-16 md:mb-32 pt-8 md:pt-16">
+        <div class="flex flex-col mb-10 md:mb-14">
+            <h2 class="text-3xl md:text-5xl font-heading text-gpp-primary">
+                Work in Progress
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3
-                        class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
-                    >
-                        General Inquiries
-                    </h3>
-                    <a
-                        href="mailto:contact@greenpendap.com"
-                        class="text-lg md:text-2xl hover:underline decoration-gpp-accent underline-offset-4 break-all"
-                        >greenpendapi@gmail.com
-                    </a>
-                </div>
-                <!-- <div>
-                    <h3
-                        class="font-mono text-sm uppercase tracking-widest opacity-60 mb-2"
-                    >
-                        Careers
-                    </h3>
-                    <a
-                        href="mailto:jobs@greenpendap.com"
-                        class="text-2xl hover:underline decoration-gpp-accent underline-offset-4"
-                        >jobs@greenpendap.com</a
-                    >
-                </div> -->
+        </div>
+        <Progress items={progressItems} />
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="mb-16 md:mb-32 pt-8 md:pt-16">
+        <div
+            class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 border-b border-gpp-text/10 pb-6"
+        >
+            <div>
+                <span
+                    class="text-xs font-mono uppercase tracking-[0.2em] text-gpp-muted mb-2 block"
+                    >The People</span
+                >
+                <h2 class="text-3xl md:text-5xl font-heading text-gpp-primary">
+                    Our Team
+                </h2>
             </div>
+            <p class="text-sm text-gpp-muted mt-3 md:mt-0 max-w-xs">
+                A passionate group of creators bringing games to life from
+                Bengkulu, Indonesia.
+            </p>
         </div>
 
-        <div
-            class="mt-12 md:mt-24 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-t border-white/20 pt-8"
-        >
-            <p class="text-sm opacity-50">
-                &copy; 2025 Green Pendap Production. All rights reserved.
-            </p>
-            <div class="flex gap-6">
-                <a
-                    href="https://www.instagram.com/greenpendapproject/"
-                    class="hover:text-gpp-accent transition-colors">Instagram</a
-                >
-            </div>
-        </div>
+        <TeamTree />
     </section>
+
+
 </Layout>

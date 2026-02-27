@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+interface ProgressItem {
+  title: string;
+  date: string;
+  image: ImageMetadata;
+  description: string;
+}
+
+interface Props {
+  items: ProgressItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {
+    items.map((item) => (
+      <div class="group flex flex-col bg-white/5 border border-gpp-text/10 rounded-xl overflow-hidden hover:border-gpp-primary/30 transition-all duration-300">
+        <div class="aspect-video overflow-hidden relative">
+          <Image
+            src={item.image}
+            alt={item.title}
+            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+          />
+         
+        </div>
+        
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-heading text-gpp-primary mb-2 group-hover:text-gpp-accent transition-colors duration-300">
+            {item.title}
+          </h3>
+          <p class="text-sm text-gpp-muted leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    ))
+  }
+</div>
