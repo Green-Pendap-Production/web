@@ -1,89 +1,89 @@
 ---
-const teamData = {
-    name: "Management",
-    members: [
-        "Abdul Vaiz Vahry Iskandar",
-        "Muhammad Yusuf Alfarabi",
-        "Kevin Stevino Arnovan",
-        "Zora Ghaziyah Wanie",
-        "Vikri Abdullah Razzak",
-    ],
-    departments: [
-        {
-            name: "Programming",
-            members: [
-                "Rifqi Reis Ramadhan",
-                "Abdul Vaiz Vahry Iskandar",
-                "Muhammad Yusuf Alfarabi",
-    	        "Vikri Abdullah Razzak",
-            ],
-        },
-        {
-            name: "2D Design",
-            members: [
-                "Atiqah Najla Fadhilah Rachman",
-                "Zahra Alifia Anshori",
-                "Kaysa Naura",
-                "Haekal Abdillah Ramadhan",
-            ],
-        },
-        {
-            name: "3D Design",
-            members: ["Muhamad Gazril Alfarizi", "Zora Ghaziyah Wanie"],
-        },
-        {
-            name: "Audio",
-            members: ["Rafi Andika", "Kevin Stevino Arnovan"],
-        },
-    ],
+const managementData = {
+  name: "Management",
+  members: [
+    "Abdul Vaiz Vahry Iskandar",
+    "Muhammad Yusuf Alfarabi",
+    "Kevin Stevino Arnovan",
+    "Zora Ghaziyah Wanie",
+    "Vikri Abdullah Razzak",
+  ],
 };
+
+const divisionData = [
+  {
+    name: "Division A",
+    members: [
+      { name: "Abdul Vaiz Vahry Iskandar", role: "Programming" },
+      { name: "Muhammad Yusuf Alfarabi", role: "Programming" },
+      { name: "Kevin Stevino Arnovan", role: "Audio" },
+      { name: "Zora Ghaziyah Wanie", role: "3D Design" },
+      { name: "Rifqi Reis Ramadhan", role: "Programming" },
+      { name: "Atiqah Najla Fadhilah Rachman", role: "2D Design" },
+      { name: "Zahra Alifia Anshori", role: "2D Design" },
+      { name: "Muhamad Gazril Alfarizi", role: "3D Design" },
+    ],
+  },
+  {
+    name: "Division B",
+    members: [
+      { name: "Vikri Abdullah Razzak", role: "Programming" },
+      { name: "Haekal Abdillah Ramadhan", role: "2D Design" },
+      { name: "Kaysa Naura", role: "2D Design" },
+      { name: "Rafi Andika", role: "Audio" },
+    ],
+  },
+];
 ---
 
 <div class="team-container w-full mt-8">
-    <!-- Management -->
-    <div class="team-category mb-16">
-        <h3
-            class="text-2xl md:text-3xl font-heading text-gpp-primary mb-6 border-b-4 border-gpp-primary pb-2 uppercase tracking-wide inline-block"
-        >
-            {teamData.name}
-        </h3>
-        <ul class="flex flex-col w-full">
-            {
-                teamData.members.map((member) => (
-                    <li class="group border-b border-gpp-text/20 py-5 hover:border-gpp-primary transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
-                        <span class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
-                        <span class="text-lg md:text-xl font-medium text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex justify-between items-center px-4">
-                            {member}
-                            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-heading text-gpp-bg">
-                                MNJ
-                            </span>
-                        </span>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+  <!-- Management -->
+  <div class="team-category mb-16">
+    <h3
+      class="text-2xl md:text-3xl font-heading text-gpp-primary mb-6 border-b-4 border-gpp-primary pb-2 uppercase tracking-wide inline-block"
+    >
+      {managementData.name}
+    </h3>
+    <ul class="flex flex-col w-full">
+      {
+        managementData.members.map((member) => (
+          <li class="group border-b border-gpp-text/20 py-5 hover:border-gpp-primary transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
+            <span class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
+            <span class="text-lg md:text-xl font-medium text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex justify-between items-center px-4">
+              {member}
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-heading text-gpp-bg">
+                MNJ
+              </span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 
-    <!-- Departments -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-        {
-            teamData.departments.map((dept) => (
-                <div class="team-category">
-                    <h3 class="text-lg md:text-xl font-heading text-gpp-accent mb-4 border-b-2 border-gpp-accent pb-2 uppercase tracking-wide inline-block">
-                        {dept.name}
-                    </h3>
-                    <ul class="flex flex-col">
-                        {dept.members.map((member) => (
-                            <li class="group border-b border-gpp-text/10 py-4 hover:border-gpp-accent transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
-                                <span class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
-                                <span class="text-lg md:text-xl text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex justify-between items-center px-4">
-                                    {member}
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ))
-        }
-    </div>
+  <!-- Divisions -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+    {
+      divisionData.map((division) => (
+        <div class="team-category mb-16">
+          <h3 class="text-2xl md:text-3xl font-heading text-gpp-accent mb-6 border-b-4 border-gpp-accent pb-2 uppercase tracking-wide inline-block">
+            {division.name}
+          </h3>
+          <ul class="flex flex-col w-full">
+            {division.members.map((member) => (
+              <li class="group border-b border-gpp-text/20 py-4 hover:border-gpp-accent transition-colors duration-300 relative overflow-hidden flex items-center cursor-default">
+                <span class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out -z-10" />
+                <span class="text-lg md:text-xl font-medium text-gpp-text group-hover:text-gpp-bg transition-colors duration-300 relative z-10 w-full flex flex-col md:flex-row md:justify-between md:items-center px-4">
+                  <span>{member.name}</span>
+                  <span class="text-sm md:text-base font-heading text-gpp-accent group-hover:text-gpp-bg/90 mt-1 md:mt-0 transition-colors duration-300">
+                    {member.role}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
 </div>
