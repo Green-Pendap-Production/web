@@ -36,28 +36,24 @@ const divisionData = [
   <!-- Management / Direksi -->
   <div class="team-category mb-24">
     <div class="flex flex-col mb-10">
-      <h3 class="text-3xl md:text-4xl font-heading text-gpp-primary mb-2">
+      <h3 class="text-3xl md:text-4xl font-heading text-gpp-primary mb-2 inline-block border-b-4 border-gpp-primary pb-2">
         {managementData.name}
       </h3>
-      <p class="text-gpp-text/60 font-serif italic">Leading the vision and strategy.</p>
+      <p class="text-gpp-text/80 font-medium">Leading the vision and strategy.</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         managementData.members.map((member) => (
-          <div class="group relative bg-gpp-bg overflow-hidden border border-gpp-text/10 rounded-3xl p-6 md:p-8 hover:border-gpp-primary transition-all duration-500 hover:shadow-2xl hover:shadow-gpp-primary/20 hover:-translate-y-1">
-            <!-- Decorative Background Elements -->
-            <div class="absolute -right-8 -top-8 w-32 h-32 bg-gpp-primary/10 rounded-full blur-2xl group-hover:bg-gpp-primary/20 transition-all duration-700 group-hover:scale-150" />
-            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-gpp-accent/10 rounded-full blur-xl group-hover:bg-gpp-accent/30 transition-all duration-700 group-hover:scale-150" />
+          <div class="group relative bg-[#fff9e6] overflow-hidden border-2 border-gpp-primary/20 rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300 shadow-md flex flex-col justify-between min-h-[140px]">
+            <!-- Decorative Tape -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 bg-white/50 border-2 border-gpp-primary/20 rotate-3 z-20"></div>
             
-            <div class="relative z-10 flex flex-col h-full justify-between min-h-[120px]">
-              <div class="flex items-start justify-between mb-4">
-                <span class="text-xs md:text-sm font-mono uppercase tracking-widest text-gpp-primary font-semibold">{member.role}</span>
-                <span class="text-gpp-primary/20 group-hover:text-gpp-primary/50 transition-colors duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
-                </span>
+            <div class="relative z-10 flex flex-col h-full justify-between gap-4 mt-2">
+              <div class="flex items-start justify-between">
+                <span class="text-xs md:text-sm font-heading uppercase tracking-wider text-white bg-gpp-primary px-3 py-1 rounded-md border-2 border-gpp-primary shadow-[2px_2px_0_0_rgba(0,0,0,0.2)] inline-block">{member.role}</span>
               </div>
-              <h4 class="text-xl md:text-2xl font-serif italic text-gpp-text group-hover:text-gpp-primary transition-colors duration-300">{member.name}</h4>
+              <h4 class="text-xl md:text-2xl font-heading text-gpp-text leading-tight">{member.name}</h4>
             </div>
           </div>
         ))
@@ -70,20 +66,20 @@ const divisionData = [
     {
       divisionData.map((division) => (
         <div class="mb-16">
-          <div class="flex flex-col mb-10">
-            <h3 class="text-3xl md:text-4xl font-heading text-gpp-accent mb-2">
+          <div class="flex flex-col mb-8">
+            <h3 class="text-3xl md:text-4xl font-heading text-gpp-accent mb-2 inline-block border-b-4 border-gpp-accent pb-2">
               {division.name}
             </h3>
-            <p class="text-gpp-text/60 font-serif italic">The creative force bringing the game to life.</p>
+            <p class="text-gpp-text/80 font-medium">The creative force bringing the game to life.</p>
           </div>
           
           <div class="flex flex-wrap gap-4 md:gap-6">
             {division.members.map((member) => (
-              <div class="group flex items-center gap-3 bg-gpp-bg border border-gpp-text/10 rounded-full py-2 px-4 md:py-3 md:px-6 hover:bg-gpp-accent hover:border-gpp-accent transition-all duration-300 cursor-default hover:shadow-lg hover:shadow-gpp-accent/20 hover:-translate-y-1">
-                <div class="w-2 h-2 rounded-full bg-gpp-accent group-hover:bg-gpp-bg transition-colors duration-300 group-hover:scale-150" />
-                <span class="font-medium text-sm md:text-base text-gpp-text group-hover:text-gpp-bg transition-colors duration-300">{member.name}</span>
-                <div class="w-px h-4 bg-gpp-text/20 group-hover:bg-gpp-bg/30 transition-colors duration-300"></div>
-                <span class="text-xs font-mono text-gpp-muted group-hover:text-gpp-bg/80 transition-colors duration-300">{member.role}</span>
+              <div class="group flex items-center gap-3 bg-white border-2 border-gpp-primary/20 rounded-full py-2 px-5 hover:-translate-y-1 transition-transform duration-300 cursor-default shadow-sm">
+                <div class="w-3 h-3 rounded-full bg-gpp-accent border-2 border-gpp-primary" />
+                <span class="font-bold text-sm md:text-base text-gpp-primary">{member.name}</span>
+                <div class="w-2 h-2 rounded-full bg-gpp-primary/20"></div>
+                <span class="text-xs font-heading uppercase text-gpp-text/80 bg-gpp-bg px-2 py-1 rounded-md border-2 border-gpp-primary/20">{member.role}</span>
               </div>
             ))}
           </div>

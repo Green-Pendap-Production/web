@@ -2,64 +2,125 @@
 
 ---
 
-<aside
-    class="fixed top-0 left-0 h-screen w-64 bg-gpp-bg border-r border-gpp-text/10 hidden md:flex flex-col justify-between p-8 z-50"
->
-    <!-- Logo Area -->
-    <div class="flex flex-col gap-4">
-        <a href="#" class="inline-block">
+<div class="fixed top-0 left-0 p-8 z-50 pointer-events-none md:block hidden">
+    <!-- Menu Container -->
+    <div class="relative w-20 h-20 pointer-events-auto">
+        <!-- Radial Menu Items -->
+        <nav id="radial-menu" class="absolute top-1/2 left-1/2 w-0 h-0 flex items-center justify-center">
+            <a href="#home" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">Home</a>
+            <a href="#games" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">Games</a>
+            <a href="#about" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">About</a>
+            <a href="#progress" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">Progress</a>
+            <a href="#team" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">Team</a>
+            <a href="#contact" class="radial-item absolute w-16 h-16 rounded-full bg-gpp-bg border border-gpp-primary/30 text-gpp-text flex items-center justify-center font-heading text-xs hover:text-gpp-bg hover:bg-gpp-primary hover:border-gpp-primary transition-colors shadow-lg opacity-0 scale-0">Contact</a>
+        </nav>
+
+        <!-- Logo Button -->
+        <button
+            id="logo-button"
+            class="absolute top-0 left-0 w-20 h-20 flex items-center justify-center bg-gpp-bg/80 backdrop-blur-sm rounded-full shadow-lg border border-transparent hover:border-gpp-accent/50 transition-all duration-300 z-10"
+            aria-label="Toggle Menu"
+        >
             <img
-                src="/logo.png"
+                src="/logoNoText.png"
                 alt="Green Pendap Logo"
-                class="w-full max-w-37.5 h-auto"
+                class="w-16 h-auto"
             />
-        </a>
-        <p
-            class="text-xs font-mono text-gpp-muted uppercase tracking-widest mt-2"
-        >
-            Production
-        </p>
+        </button>
     </div>
+</div>
 
-    <!-- Navigation -->
-    <nav class="flex flex-col gap-4">
-        <a
-            href="#home"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >Home</a
-        >
-        <a
-            href="#games"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >Games</a
-        >
-        <a
-            href="#about"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >About</a
-        >
-        <a
-            href="#progress"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >Progress</a
-        >
-        <a
-            href="#team"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >Team</a
-        >
-        <a
-            href="#contact"
-            class="font-heading text-xl hover:text-gpp-accent transition-colors hover:italic"
-            >Contact</a
-        >
-    </nav>
+<script>
+    import { gsap } from "gsap";
 
-    <!-- Footer / Socials -->
-    <div class="flex flex-col gap-2">
-        <p class="text-[10px] text-gpp-muted">
-            Est. 2025<br />
-            Bengkulu, Indonesia
-        </p>
-    </div>
-</aside>
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('logo-button');
+        const items = document.querySelectorAll('.radial-item');
+        let isOpen = false;
+
+        // Radius for the menu items
+        const radius = 160;
+
+        button?.addEventListener('click', () => {
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                // Animate logo slightly to show activation
+                gsap.to(button, {
+                    scale: 0.9,
+                    rotation: 15,
+                    boxShadow: "0px 0px 20px 2px rgba(47, 79, 47, 0.6)", // gpp-primary green
+                    duration: 0.4,
+                    ease: "back.out(1.7)"
+                });
+
+                // Animate items out
+                items.forEach((item, index) => {
+                    // Quarter circle from 0 to 90 degrees
+                    // 0 degrees is right (x positive, y 0)
+                    // 90 degrees is down (x 0, y positive)
+                    const angle = (index / (items.length - 1)) * 90;
+                    const angleRad = angle * (Math.PI / 180);
+                    
+                    const x = Math.cos(angleRad) * radius;
+                    const y = Math.sin(angleRad) * radius;
+
+                    gsap.to(item, {
+                        x: x - 32, // -32 because width is 64px, we need to center it on the coordinates
+                        y: y - 32,
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: index * 0.05,
+                        ease: "back.out(1.5)"
+                    });
+                });
+            } else {
+                // Revert logo
+                gsap.to(button, {
+                    scale: 1,
+                    rotation: 0,
+                    boxShadow: "0px 0px 0px 0px rgba(122, 160, 99, 0)",
+                    duration: 0.4,
+                    ease: "power2.inOut"
+                });
+
+                // Animate items back in
+                items.forEach((item, index) => {
+                    gsap.to(item, {
+                        x: -32,
+                        y: -32,
+                        scale: 0,
+                        opacity: 0,
+                        duration: 0.4,
+                        delay: (items.length - 1 - index) * 0.05,
+                        ease: "power2.in"
+                    });
+                });
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isOpen && button && !button.contains(e.target as Node) && !(e.target as Element).closest('#radial-menu')) {
+                button.click();
+            }
+        });
+        
+        // Close menu when a link is clicked and open corresponding window
+        items.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetHref = item.getAttribute('href');
+                if (targetHref && targetHref.startsWith('#')) {
+                    const windowId = targetHref.substring(1);
+                    if ((window as any).openWindow) {
+                        (window as any).openWindow(windowId);
+                    }
+                }
+
+                if(isOpen) button?.click();
+            });
+        });
+    });
+</script>

@@ -5,7 +5,7 @@ import HeroBackground from "../components/HeroBackground.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
 import Progress from "../components/Progress.astro";
 import TeamTree from "../components/TeamTree.astro";
-import Footer from "../components/Footer.astro";
+import Window from "../components/Window.astro";
 import { Image } from "astro:assets";
 
 // Import images
@@ -49,200 +49,329 @@ const progressItems = [
 ];
 ---
 
-<Layout title="Green Pendap Production">
-    <!-- Hero Section -->
-    <section
-        id="home"
-        class="min-h-svh flex flex-col justify-center mb-12 md:mb-24 relative overflow-hidden"
+<Layout title="Green Pendap Production | Desktop">
+    <!-- Background / Wallpaper -->
+    <div
+        class="absolute inset-0 z-0 bg-linear-to-br from-[#8dbd8d] to-[#4b7a4b] pointer-events-auto overflow-hidden"
     >
         <HeroBackground src={heroImage} />
-
+        <!-- Subtle Grid Pattern -->
         <div
-            class="relative z-10 pointer-events-none mt-12 md:mt-20 lg:mt-0 container mx-auto px-2 md:px-4 flex flex-col justify-center"
+            class="absolute inset-0"
+            style="background-image: linear-gradient(rgba(255,255,255,0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.1) 2px, transparent 2px); background-size: 100px 100px;"
         >
-            <div
-                class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full"
-            >
-                <div class="flex flex-col items-start w-full lg:col-span-7">
-                    <h1
-                        class="text-6xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-heading text-gpp-primary leading-[0.9] mb-6 md:mb-8 tracking-tighter drop-shadow-sm flex flex-col items-start"
-                    >
-                        <span
-                            class="relative group inline-block cursor-default pointer-events-auto whitespace-nowrap"
-                        >
-                            <span
-                                class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                            ></span>
-                            <span
-                                class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-                                >OUR GAME</span
-                            >
-                        </span>
-                        <span
-                            class="relative group inline-block cursor-default pointer-events-auto whitespace-nowrap"
-                        >
-                            <span
-                                class="absolute inset-0 bg-gpp-accent scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                            ></span>
-                            <span
-                                class="relative z-10 group-hover:text-gpp-bg transition-colors duration-300"
-                                >IS MADE</span
-                            >
-                        </span>
-                        <span
-                            class="relative group inline-block cursor-default pointer-events-auto whitespace-nowrap"
-                        >
-                            <span
-                                class="absolute inset-0 bg-gpp-primary scale-x-0 group-hover:scale-x-110 -left-[2%] w-[105%] transition-transform duration-500 origin-left ease-out -skew-x-6 -z-10"
-                            ></span>
-                            <span
-                                class="relative z-10 text-transparent bg-clip-text bg-linear-to-br from-gpp-primary to-gpp-accent/80 group-hover:text-gpp-bg group-hover:bg-none transition-all duration-300"
-                                >WITH LOVE</span
-                            >
-                        </span>
-                    </h1>
+        </div>
+    </div>
 
-                    <p
-                        class="text-base md:text-xl text-gpp-text/80 max-w-xl mb-10 font-medium pointer-events-auto leading-relaxed"
-                    >
-                        Crafting unique interactive experiences wrapped in
-                        layers of mystery and local flavor. We believe in the
-                        power of stories that connect us all.
-                    </p>
-
-                    <div
-                        class="flex flex-wrap items-center gap-6 pointer-events-auto"
-                    >
-                        <a
-                            href="#games"
-                            class="inline-flex items-center gap-2 bg-gpp-primary text-gpp-bg px-6 py-3 rounded-full hover:bg-gpp-accent transition-colors duration-300 font-bold text-sm md:text-base shadow-md hover:shadow-lg group"
-                        >
-                            View Our Work
-                            <span
-                                class="group-hover:translate-x-1 transition-transform duration-300"
-                                >&darr;</span
-                            >
-                        </a>
-                        <a
-                            href="#about"
-                            class="inline-flex items-center gap-2 text-gpp-text/70 hover:text-gpp-primary transition-colors duration-300 font-bold text-sm md:text-base border-b-2 border-transparent hover:border-gpp-primary pb-1"
-                        >
-                            Read Our Story
-                        </a>
-                    </div>
+    <!-- Windows Container -->
+    <div
+        id="desktop-area"
+        class="relative w-full flex flex-col gap-12 p-4 pt-28 pb-32 md:p-0 md:absolute md:inset-0 md:z-10 md:pointer-events-none md:block"
+    >
+        <!-- Welcome Window -->
+        <Window
+            id="home"
+            title="Welcome.exe"
+            isOpen={false}
+            initialX="calc(50vw - 350px)"
+            initialY="calc(50vh - 350px)"
+            width="w-[90vw] md:w-[700px] max-w-[95vw]"
+        >
+            <div class="flex flex-col items-center text-center relative pt-8">
+                <!-- Floating Sticker -->
+                <div
+                    class="absolute top-0 right-0 md:top-2 md:right-4 bg-[#ffeb3b] text-gpp-primary font-bold px-4 py-2 rounded-xl border-4 border-gpp-primary transform rotate-6 shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] z-20 hidden sm:block"
+                >
+                    Made with <span class="text-[#ff4747]">♥</span>
                 </div>
 
-                <div
-                    class="hidden lg:flex lg:col-span-5 relative justify-center items-center pointer-events-auto group"
+                <!-- Giant Heading -->
+                <h1
+                    class="text-5xl sm:text-6xl md:text-[5rem] font-heading text-gpp-primary leading-none mb-6 drop-shadow-[4px_4px_0_rgba(47,79,47,0.2)] tracking-tight"
                 >
-                    <div
-                        class="absolute inset-0 bg-gpp-primary/10 rounded-3xl transform rotate-3 scale-105 -z-10 transition-transform duration-500 group-hover:rotate-6"
+                    GREEN PENDAP<br />
+                    <span
+                        class="text-gpp-accent text-4xl sm:text-5xl md:text-[4rem] block mt-2"
+                        >PRODUCTION</span
                     >
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gpp-accent/10 rounded-3xl transform -rotate-2 scale-105 -z-20 transition-transform duration-500 group-hover:-rotate-4 group-hover:scale-110"
-                    >
-                    </div>
+                </h1>
 
+                <p
+                    class="text-base md:text-lg text-gpp-text/80 max-w-xl mb-10 font-medium leading-relaxed bg-white/50 p-4 rounded-xl border-2 border-gpp-primary/20 border-dashed"
+                >
+                    Crafting unique interactive experiences wrapped in layers of
+                    mystery and local flavor. We believe in the power of stories
+                    that connect us all.
+                </p>
+
+                <!-- Polaroid Photo -->
+                <div class="w-full max-w-sm mx-auto mb-6 relative">
+                    <!-- Red Pin -->
                     <div
-                        class="bg-gpp-bg p-4 shadow-xl border border-gpp-text/10 rounded-2xl transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl w-full max-w-sm"
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#ff4747] border-4 border-gpp-primary shadow-[0_4px_0_0_rgba(47,79,47,1)] z-20"
+                    >
+                    </div>
+                    <!-- Photo Frame -->
+                    <div
+                        class="bg-white p-3 pb-12 shadow-[8px_8px_0px_0px_rgba(47,79,47,1)] border-4 border-gpp-primary transform transition-transform duration-500 hover:-translate-y-2 w-full relative rotate-2"
                     >
                         <Image
                             src={heroImage}
                             alt="Green Pendap Production Studio"
-                            class="rounded-xl w-full h-auto object-cover aspect-4/5 object-center grayscale group-hover:grayscale-0 transition-all duration-700"
+                            class="w-full h-auto object-cover aspect-4/5 object-center border-4 border-gpp-primary/10"
                         />
                         <div
-                            class="flex items-center justify-between mt-4 px-2"
+                            class="absolute bottom-3 left-1/2 -translate-x-1/2 text-gpp-primary font-heading text-xl uppercase tracking-widest opacity-80"
                         >
-                            <span class="text-xs font-mono text-gpp-muted"
-                                >GPP_HQ_01</span
-                            >
-                            <span
-                                class="text-xs font-serif italic text-gpp-primary font-semibold"
-                                >Behind the scenes</span
-                            >
+                            GPP_HQ_01
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </Window>
 
-    <!-- Games Section -->
-    <section id="games" class="mb-16 md:mb-32 pt-8 md:pt-16">
-        <h2
-            class="text-3xl md:text-4xl font-heading text-gpp-primary mb-8 md:mb-12 border-b border-gpp-text/10 pb-4"
+        <!-- Games Window -->
+        <Window
+            id="games"
+            title="Games_Folder"
+            initialX="40vw"
+            initialY="5vh"
+            width="w-[90vw] md:w-[800px] max-w-[95vw]"
         >
-            Selected Works
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-            {allGames.map((game) => <ProjectCard {...game} />)}
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section
-        id="about"
-        class="mb-16 md:mb-32 pt-8 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12"
-    >
-        <div class="col-span-12 md:col-span-4">
             <h2
-                class="text-3xl md:text-4xl font-heading text-gpp-primary mb-4 md:mb-6 border-b border-gpp-text/10 pb-4"
+                class="text-3xl md:text-4xl font-heading text-gpp-primary mb-6 border-b-4 border-gpp-primary pb-2 inline-block"
             >
-                Our Studio
+                Selected Works
             </h2>
-        </div>
-        <div
-            class="col-span-12 md:col-span-8 space-y-8 text-lg leading-relaxed"
-        >
-            <p class="text-xl md:text-2xl font-serif italic text-gpp-accent">
-                Founded in 2025 in the heart of Bengkulu, Indonesia.
-            </p>
-            <p>
-                We are a diverse team of artists, programmers, and storytellers
-                who believe in the power of interactive media. Like the <span
-                    class="text-gpp-primary font-bold">Pendap</span
-                > a traditional dish wrapped in leaves our games are wrapped in layers
-                of mystery and flavor.
-            </p>
-
-            <div class="mt-12 w-full">
-                <ImageCarousel images={[heroImage, weImage, satu]} />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {allGames.map((game) => <ProjectCard {...game} />)}
             </div>
-        </div>
-    </section>
+        </Window>
 
-    <!-- Progress Section -->
-    <section id="progress" class="mb-16 md:mb-32 pt-8 md:pt-16">
-        <div class="flex flex-col mb-10 md:mb-14">
-            <h2 class="text-3xl md:text-5xl font-heading text-gpp-primary">
+        <!-- About Window -->
+        <Window
+            id="about"
+            title="About_Studio.txt"
+            initialX="5vw"
+            initialY="15vh"
+            width="w-[90vw] md:w-[750px] max-w-[95vw]"
+        >
+            <div class="space-y-6 text-lg leading-relaxed">
+                <h2
+                    class="text-3xl font-heading text-gpp-primary border-b-4 border-gpp-primary pb-2 inline-block"
+                >
+                    Our Studio
+                </h2>
+                <p
+                    class="text-xl md:text-2xl font-serif italic text-gpp-accent bg-yellow-100 p-4 border-2 border-gpp-accent rounded-xl shadow-[4px_4px_0px_0px_rgba(139,90,43,1)]"
+                >
+                    Founded in 2025 in the heart of Bengkulu, Indonesia.
+                </p>
+                <p class="font-medium">
+                    We are a diverse team of artists, programmers, and
+                    storytellers who believe in the power of interactive media.
+                    Like the <span class="text-gpp-primary font-bold text-xl"
+                        >Pendap</span
+                    > a traditional dish wrapped in leaves our games are wrapped in
+                    layers of mystery and flavor.
+                </p>
+                <div
+                    class="mt-8 w-full border-4 border-gpp-primary rounded-3xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(47,79,47,1)]"
+                >
+                    <ImageCarousel images={[heroImage, weImage, satu]} />
+                </div>
+            </div>
+        </Window>
+
+        <!-- Progress Window -->
+        <Window
+            id="progress"
+            title="DevLog_Tracker"
+            initialX="35vw"
+            initialY="20vh"
+            width="w-[90vw] md:w-[600px] max-w-[95vw]"
+        >
+            <h2
+                class="text-3xl md:text-4xl font-heading text-gpp-primary mb-6 border-b-4 border-gpp-primary pb-2 inline-block"
+            >
                 Work in Progress
             </h2>
-        </div>
-        <Progress items={progressItems} />
-    </section>
+            <div
+                class="bg-white/50 p-4 rounded-2xl border-2 border-gpp-primary border-dashed"
+            >
+                <Progress items={progressItems} />
+            </div>
+        </Window>
 
-    <!-- Team Section -->
-    <section id="team" class="mb-16 md:mb-32 pt-8 md:pt-16">
-        <div
-            class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 border-b border-gpp-text/10 pb-6"
+        <!-- Team Window -->
+        <Window
+            id="team"
+            title="Team_Roster.exe"
+            initialX="10vw"
+            initialY="2vh"
+            width="w-[90vw] md:w-[800px] max-w-[95vw]"
+            height="max-h-[85vh]"
         >
-            <div>
+            <div class="mb-8">
                 <span
-                    class="text-xs font-mono uppercase tracking-[0.2em] text-gpp-muted mb-2 block"
+                    class="text-xs font-bold uppercase tracking-widest text-gpp-accent bg-yellow-100 px-2 py-1 rounded-md border border-gpp-accent mb-2 inline-block"
                     >The People</span
                 >
                 <h2 class="text-3xl md:text-5xl font-heading text-gpp-primary">
                     Our Team
                 </h2>
+                <p class="text-sm font-medium mt-2 max-w-xs">
+                    A passionate group of creators bringing games to life from
+                    Bengkulu, Indonesia.
+                </p>
             </div>
-            <p class="text-sm text-gpp-muted mt-3 md:mt-0 max-w-xs">
-                A passionate group of creators bringing games to life from
-                Bengkulu, Indonesia.
-            </p>
-        </div>
 
-        <TeamTree />
-    </section>
+            <TeamTree />
+        </Window>
+
+        <!-- Contact Window (Since it's in the menu) -->
+        <Window
+            id="contact"
+            title="Contact.msg"
+            initialX="50vw"
+            initialY="25vh"
+            width="w-[90vw] md:w-[500px] max-w-[95vw]"
+        >
+            <div class="text-center py-8">
+                <h2 class="text-3xl font-heading text-gpp-primary mb-4">
+                    Let's Connect!
+                </h2>
+                <p class="font-medium mb-6">
+                    Want to collaborate or just say hi?
+                </p>
+                <a
+                    href="mailto:greenpendapi@gmail.com"
+                    class="inline-block bg-gpp-primary text-white font-bold py-3 px-8 rounded-full border-4 border-gpp-primary hover:bg-gpp-accent hover:border-gpp-accent transition-colors shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] hover:-translate-y-1 hover:shadow-[4px_8px_0px_0px_rgba(47,79,47,1)]"
+                >
+                    greenpendapi@gmail.com
+                </a>
+            </div>
+        </Window>
+    </div>
 </Layout>
+
+<script>
+    import { gsap } from "gsap";
+    import { Draggable } from "gsap/Draggable";
+
+    gsap.registerPlugin(Draggable);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        let zIndexCounter = 100;
+        const windows = document.querySelectorAll("[data-window]");
+
+        // Initialize Draggable for each window individually ONLY on Desktop
+        if (window.innerWidth >= 768) {
+            windows.forEach((win) => {
+                const header = win.querySelector(".window-header");
+                Draggable.create(win, {
+                    type: "x,y",
+                    handle: header,
+                    edgeResistance: 0.65,
+                    onPress: function () {
+                        zIndexCounter++;
+                        gsap.set(this.target, { zIndex: zIndexCounter });
+                    },
+                });
+            });
+        }
+
+        // Handle Close Buttons
+        const closeBtns = document.querySelectorAll(".window-close-btn");
+        closeBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const targetId = (btn as HTMLElement).dataset.target;
+                if (targetId) {
+                    const win = document.getElementById(targetId);
+                    if (win) {
+                        gsap.to(win, {
+                            scale: 0.75,
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: "back.in(1.5)",
+                            onComplete: () => {
+                                win.classList.remove(
+                                    "pointer-events-auto",
+                                    "md:pointer-events-auto",
+                                );
+                                win.classList.add(
+                                    "pointer-events-none",
+                                    "md:pointer-events-none",
+                                );
+                            },
+                        });
+                    }
+                }
+            });
+        });
+
+        // Bring to front on click anywhere in window
+        windows.forEach((win) => {
+            win.addEventListener("mousedown", () => {
+                zIndexCounter++;
+                gsap.set(win, { zIndex: zIndexCounter });
+            });
+        });
+
+        // Expose openWindow globally so Sidebar can call it
+        (window as any).openWindow = function (id: string) {
+            const win = document.getElementById(`window-${id}`);
+            if (win) {
+                if (window.innerWidth < 768) {
+                    // Mobile: Just scroll to it
+                    win.scrollIntoView({ behavior: "smooth" });
+                    return;
+                }
+
+                zIndexCounter++;
+                gsap.set(win, { zIndex: zIndexCounter });
+                win.classList.remove(
+                    "pointer-events-none",
+                    "md:pointer-events-none",
+                );
+                win.classList.add(
+                    "pointer-events-auto",
+                    "md:pointer-events-auto",
+                );
+                gsap.fromTo(
+                    win,
+                    { scale: 0.75, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.4,
+                        ease: "back.out(1.5)",
+                    },
+                );
+            }
+        };
+
+        // Handle window spawn sequence AFTER boot screen completes
+        document.addEventListener("bootComplete", () => {
+            if (window.innerWidth >= 768) {
+                // Desktop Startup Animation Sequence
+                // Jendela bermunculan dari bawah tumpukan secara berurutan
+                setTimeout(() => (window as any).openWindow("about"), 300);
+                setTimeout(() => (window as any).openWindow("contact"), 500);
+                setTimeout(() => (window as any).openWindow("progress"), 700);
+                setTimeout(() => (window as any).openWindow("team"), 900);
+                setTimeout(() => (window as any).openWindow("games"), 1100);
+                // Terakhir, Welcome.exe tepat di tengah layar!
+                setTimeout(() => (window as any).openWindow("home"), 1300);
+            } else {
+                // Mobile behavior remains unaffected
+                setTimeout(() => (window as any).openWindow("about"), 100);
+                setTimeout(() => (window as any).openWindow("contact"), 200);
+                setTimeout(() => (window as any).openWindow("progress"), 300);
+                setTimeout(() => (window as any).openWindow("team"), 400);
+                setTimeout(() => (window as any).openWindow("games"), 500);
+                setTimeout(() => (window as any).openWindow("home"), 600);
+            }
+        });
+    });
+</script>

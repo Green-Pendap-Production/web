@@ -127,9 +127,13 @@
             }
         });
 
-        // Close menu when a link is clicked
+        // Close menu when a link is clicked and scroll smoothly
         mobileLinks.forEach((link) => {
-            link.addEventListener("click", () => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetId = (link as HTMLAnchorElement).getAttribute("href")?.substring(1);
+                const targetElement = document.getElementById(`window-${targetId}`);
+                
                 isMenuOpen = false;
                 mobileMenu.classList.add(
                     "opacity-0",
@@ -144,6 +148,12 @@
                 document.body.style.overflow = "";
                 menuIcon.innerHTML =
                     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+
+                if (targetElement) {
+                    // Smooth scroll to the element, offset for the header
+                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }
             });
         });
     }
