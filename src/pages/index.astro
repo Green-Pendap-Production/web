@@ -6,6 +6,7 @@ import ImageCarousel from "../components/ImageCarousel.astro";
 import Progress from "../components/Progress.astro";
 import TeamTree from "../components/TeamTree.astro";
 import Window from "../components/Window.astro";
+import DesktopIcon from "../components/DesktopIcon.astro";
 import { Image } from "astro:assets";
 
 // Import images
@@ -15,6 +16,15 @@ import heroImage from "../assets/hero.jpeg";
 import weImage from "../assets/we.jpeg";
 import satu from "../assets/bg/1.jpeg";
 import dua from "../assets/bg/2.jpeg";
+
+const desktopIcons = [
+    { id: "home", label: "Welcome.exe", type: "exe" as const },
+    { id: "games", label: "Games", type: "folder" as const },
+    { id: "about", label: "About.txt", type: "txt" as const },
+    { id: "progress", label: "DevLog.exe", type: "exe" as const },
+    { id: "team", label: "Team.exe", type: "exe" as const },
+    { id: "contact", label: "Contact.msg", type: "msg" as const },
+];
 
 const allGames = [
     {
@@ -61,6 +71,11 @@ const progressItems = [
             style="background-image: linear-gradient(rgba(255,255,255,0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.1) 2px, transparent 2px); background-size: 100px 100px;"
         >
         </div>
+    </div>
+
+    <!-- Desktop Icons -->
+    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 pointer-events-auto items-start justify-items-center md:justify-items-start max-h-screen overflow-hidden hidden sm:grid">
+        {desktopIcons.map(icon => <DesktopIcon {...icon} />)}
     </div>
 
     <!-- Windows Container -->
@@ -372,6 +387,17 @@ const progressItems = [
                 setTimeout(() => (window as any).openWindow("games"), 500);
                 setTimeout(() => (window as any).openWindow("home"), 600);
             }
+        });
+
+        // Desktop Icons logic
+        const desktopIcons = document.querySelectorAll('.desktop-icon');
+        desktopIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const targetId = icon.getAttribute('data-target');
+                if (targetId) {
+                    (window as any).openWindow(targetId);
+                }
+            });
         });
     });
 </script>
