@@ -14,7 +14,7 @@ const { icons } = Astro.props;
 
 <div
   id="desktop-context-menu"
-  class="fixed min-w-[270px] bg-gpp-bg border-4 border-gpp-primary rounded-2xl shadow-[8px_8px_0px_0px_rgba(47,79,47,1)] p-2.5 z-50 opacity-0 scale-90 origin-top-left pointer-events-none transition-[opacity,transform] duration-150 ease-out"
+  class="fixed min-w-[270px] bg-gpp-bg border-4 border-gpp-primary rounded-2xl shadow-[8px_8px_0px_0px_rgba(47,79,47,1)] p-2.5 z-50 opacity-0 scale-90 origin-top-left pointer-events-none transition-[opacity,transform] duration-150 ease-out z-9999"
   role="menu"
   aria-label="Desktop context menu"
 >
@@ -102,40 +102,38 @@ const { icons } = Astro.props;
     }
 
     function openMenuAt(x: number, y: number) {
-      // Lepas class 'open' dulu supaya transition balik ke state tertutup.
-      // Tanpa ini, kalau menu sebelumnya masih terbuka lalu klik kanan lagi
-      // di tempat lain, browser hanya memindahkan posisinya tanpa animasi
-      // ulang -- karena class 'open' tidak pernah benar-benar lepas-pasang.
       closeMenu();
 
-      menu.style.left = `${x}px`;
-      menu.style.top = `${y}px`;
+      // Posisi sementara di luar layar untuk mengukur ukuran real menu
+      menu.style.left = `-9999px`;
+      menu.style.top = `-9999px`;
+      menu.style.visibility = `hidden`;
+      menu.classList.add("open");
 
-      // Ukur lebar/tinggi menu, geser kalau posisi klik mepet tepi viewport
-      // supaya menu tidak terpotong di luar layar.
-      const rect = menu.getBoundingClientRect();
-      let posX = x;
-      let posY = y;
-      if (x + rect.width > window.innerWidth) {
-        posX = window.innerWidth - rect.width - 8;
-      }
-      if (y + rect.height > window.innerHeight) {
-        posY = window.innerHeight - rect.height - 8;
-      }
-      menu.style.left = `${posX}px`;
-      menu.style.top = `${posY}px`;
-
-      // requestAnimationFrame ganda: melepas dan memasang class 'open' dalam
-      // satu event handler yang sama sering di-batch oleh browser jadi satu
-      // perubahan saja, sehingga transition dianggap "tidak berubah" dan
-      // tidak retrigger. Dua rAF memastikan browser benar-benar commit
-      // (paint) frame "tertutup" dulu sebelum kita pasang class 'open' lagi
-      // di frame berikutnya, sehingga animasi scale+fade selalu jalan dari
-      // awal setiap kali klik kanan dipanggil.
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          menu.classList.add("open");
-        });
+        const rect = menu.getBoundingClientRect();
+        const taskbarH = 56; // tinggi taskbar bawah
+
+        let posX = x;
+        let posY = y;
+
+        // Mepet kanan → geser ke kiri kursor
+        if (x + rect.width > window.innerWidth - 8) {
+          posX = x - rect.width;
+        }
+
+        // Mepet bawah (termasuk taskbar) → geser ke atas kursor
+        if (y + rect.height > window.innerHeight - taskbarH - 8) {
+          posY = y - rect.height;
+        }
+
+        // Jaga supaya tidak keluar dari tepi kiri/atas
+        posX = Math.max(8, posX);
+        posY = Math.max(8, posY);
+
+        menu.style.left = `${posX}px`;
+        menu.style.top = `${posY}px`;
+        menu.style.visibility = ``;
       });
     }
 

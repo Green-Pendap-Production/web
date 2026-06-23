@@ -76,7 +76,8 @@ const progressItems = [
     </div>
 
     <!-- Desktop Icons -->
-    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 pointer-events-auto items-start justify-items-center md:justify-items-start max-h-screen overflow-hidden hidden sm:grid">
+    <div class="absolute top-4 left-4 md:top-8 md:left-8 z-0 grid grid-cols-2 md:grid-cols-none gap-2 md:gap-4 pointer-events-auto items-start justify-items-center md:justify-items-start max-h-[calc(100vh-64px)] overflow-hidden hidden sm:grid"
+    style="grid-auto-flow: column; grid-template-rows: repeat(auto-fill, 96px);">
         {desktopIcons.map(icon => <DesktopIcon {...icon} />)}
     </div>
 
@@ -90,9 +91,10 @@ const progressItems = [
             id="home"
             title="Welcome.exe"
             isOpen={false}
-            initialX="calc(50vw - 350px)"
-            initialY="calc(50vh - 350px)"
+            initialX="32vw"
+            initialY="8vh"
             width="w-[90vw] md:w-[700px] max-w-[95vw]"
+            height="max-h-[85vh]"
         >
             <div class="flex flex-col items-center text-center relative pt-8">
                 <!-- Floating Sticker -->
@@ -151,7 +153,7 @@ const progressItems = [
         <Window
             id="games"
             title="Games_Folder"
-            initialX="40vw"
+            initialX="45vw"
             initialY="5vh"
             width="w-[90vw] md:w-[800px] max-w-[95vw]"
         >
@@ -169,8 +171,8 @@ const progressItems = [
         <Window
             id="about"
             title="About_Studio.txt"
-            initialX="5vw"
-            initialY="15vh"
+            initialX="7vw"
+            initialY="12vh"
             width="w-[90vw] md:w-[750px] max-w-[95vw]"
         >
             <div class="space-y-6 text-lg leading-relaxed">
@@ -250,7 +252,7 @@ const progressItems = [
         <Window
             id="contact"
             title="Contact.msg"
-            initialX="50vw"
+            initialX="70vw"
             initialY="25vh"
             width="w-[90vw] md:w-[500px] max-w-[95vw]"
         >
@@ -388,7 +390,7 @@ const progressItems = [
         // Handle window spawn sequence AFTER boot screen completes
         document.addEventListener("bootComplete", () => {
             if (window.innerWidth >= 768) {
-                // Urutan spawn + jeda antar window (angka dalam milidetik)
+                // Hanya 2 window yang auto-buka: About dulu, lalu Welcome di atas
                 setTimeout(() => (window as any).openWindow("progress"), 300);   // 1. DevLog
                 setTimeout(() => (window as any).openWindow("games"),   600);    // 2. Games
                 setTimeout(() => (window as any).openWindow("team"),    900);    // 3. Team
