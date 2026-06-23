@@ -153,7 +153,6 @@ const divisionData = [
 
     cards.forEach(card => {
       const popSound = new Audio("https://cdn.freesound.org/previews/708/708605_13515726-lq.mp3");
-
       card.addEventListener('click', () => {
         popSound.currentTime = 0;
         popSound.play().catch(() => {});
@@ -182,8 +181,12 @@ const divisionData = [
         document.body.style.overflow = 'hidden';
       });
     });
+    
+    const clickSound = new Audio("https://cdn.freesound.org/previews/540/540568_10912485-lq.mp3");
 
     const closeModal = () => {
+      clickSound.currentTime = 0;  // reset ke awal
+      clickSound.play().catch(() => {});
       modal.close();
       document.body.style.overflow = '';
     };

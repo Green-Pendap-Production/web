@@ -8,6 +8,7 @@ import TeamTree from "../components/TeamTree.astro";
 import Window from "../components/Window.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 import DesktopContextMenu from "../components/DesktopContextMenu.astro";
+import Taskbar from "../components/Taskbar.astro";
 import { Image } from "astro:assets";
 
 // Import images
@@ -272,6 +273,9 @@ const progressItems = [
 
     <!-- Right-click context menu di area desktop -->
     <DesktopContextMenu icons={desktopIcons} />
+
+    <!-- Taskbar bawah -->
+    <Taskbar icons={desktopIcons} />
 </Layout>
 
 <script>
@@ -300,33 +304,14 @@ const progressItems = [
             });
         }
 
-        // Handle Close Buttons
+        // Handle Close Buttons — delegate to closeWindow so taskbar stays in sync
         const closeBtns = document.querySelectorAll(".window-close-btn");
         closeBtns.forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                const closeSound = new Audio("https://cdn.freesound.org/previews/321/321806_2567799-lq.mp3");
-                closeSound.play().catch(() => {});
-                const targetId = (btn as HTMLElement).dataset.target;
-                if (targetId) {
-                    const win = document.getElementById(targetId);
-                    if (win) {
-                        gsap.to(win, {
-                            scale: 0.75,
-                            opacity: 0,
-                            duration: 0.3,
-                            ease: "back.in(1.5)",
-                            onComplete: () => {
-                                win.classList.remove(
-                                    "pointer-events-auto",
-                                    "md:pointer-events-auto",
-                                );
-                                win.classList.add(
-                                    "pointer-events-none",
-                                    "md:pointer-events-none",
-                                );
-                            },
-                        });
-                    }
+            btn.addEventListener("click", () => {
+                const rawId = (btn as HTMLElement).dataset.target; // "window-home"
+                if (rawId) {
+                    const id = rawId.replace(/^window-/, "");
+                    (window as any).closeWindow?.(id);
                 }
             });
         });
@@ -380,20 +365,38 @@ const progressItems = [
             }
         };
 
+        // Expose closeWindow globally so Taskbar can minimize windows
+        const closeSfx = new Audio("https://cdn.freesound.org/previews/540/540568_10912485-lq.mp3");
+        (window as any).closeWindow = function (id: string) {
+            const win = document.getElementById(`window-${id}`);
+            if (win) {
+                closeSfx.currentTime = 0;
+                closeSfx.play().catch(() => {});
+                gsap.to(win, {
+                    scale: 0.75,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "back.in(1.5)",
+                    onComplete: () => {
+                        win.classList.remove("pointer-events-auto", "md:pointer-events-auto");
+                        win.classList.add("pointer-events-none", "md:pointer-events-none");
+                    },
+                });
+            }
+        };
+
         // Handle window spawn sequence AFTER boot screen completes
         document.addEventListener("bootComplete", () => {
             if (window.innerWidth >= 768) {
-                // Desktop Startup Animation Sequence
-                // Jendela bermunculan dari bawah tumpukan secara berurutan
-                setTimeout(() => (window as any).openWindow("about"), 300);
-                setTimeout(() => (window as any).openWindow("contact"), 500);
-                setTimeout(() => (window as any).openWindow("progress"), 700);
-                setTimeout(() => (window as any).openWindow("team"), 900);
-                setTimeout(() => (window as any).openWindow("games"), 1100);
-                // Terakhir, Welcome.exe tepat di tengah layar!
-                setTimeout(() => (window as any).openWindow("home"), 1300);
+                // Urutan spawn + jeda antar window (angka dalam milidetik)
+                setTimeout(() => (window as any).openWindow("progress"), 300);   // 1. DevLog
+                setTimeout(() => (window as any).openWindow("games"),   600);    // 2. Games
+                setTimeout(() => (window as any).openWindow("team"),    900);    // 3. Team
+                setTimeout(() => (window as any).openWindow("about"),   1200);   // 4. About
+                setTimeout(() => (window as any).openWindow("home"),    1500);   // 5. Welcome
+                setTimeout(() => (window as any).openWindow("contact"), 3800);   // 6. Contact
             } else {
-                // Mobile behavior remains unaffected
+                // Mobile: semua window dibuka untuk scroll
                 setTimeout(() => (window as any).openWindow("about"), 100);
                 setTimeout(() => (window as any).openWindow("contact"), 200);
                 setTimeout(() => (window as any).openWindow("progress"), 300);
