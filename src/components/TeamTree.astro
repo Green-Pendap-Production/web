@@ -1,13 +1,19 @@
 ---
+import { Image } from "astro:assets";
+import imgAbdulVaiz from "../assets/potrait/AbdulVaiz.png";
+import imgHaekal from "../assets/potrait/Haekal.png";
+import imgRafiAndika from "../assets/potrait/RafiAndika.png";
+import imgZora from "../assets/potrait/Zora.png";
+
 const managementData = {
   name: "Direksi",
   members: [
-    { role: "Business Director", name: "Abdul Vaiz Vahry Iskandar" },
+    { role: "Business Director", name: "Abdul Vaiz Vahry Iskandar", image: imgAbdulVaiz },
     { role: "Operations Director", name: "Muhammad Yusuf Alfarabi" },
     { role: "Project Management Director", name: "Vikri Abdullah Razzak" },
-    { role: "Creative Director", name: "Zora Ghaziyah Wanie" },
+    { role: "Creative Director", name: "Zora Ghaziyah Wanie", image: imgZora },
     { role: "Technical Director", name: "Rifqi Reis Ramadhan" },
-    { role: "Artist Director", name: "Haekal Abdillah Ramadhan" },
+    { role: "Artist Director", name: "Haekal Abdillah Ramadhan", image: imgHaekal },
   ],
 };
 
@@ -15,18 +21,18 @@ const divisionData = [
   {
     name: "Production Team",
     members: [
-      { name: "Abdul Vaiz Vahry Iskandar", role: "Programming" },
+      { name: "Abdul Vaiz Vahry Iskandar", role: "Programming", image: imgAbdulVaiz },
       { name: "Muhammad Yusuf Alfarabi", role: "Programming" },
       { name: "Kevin Stevino Arnovan", role: "Audio" },
-      { name: "Zora Ghaziyah Wanie", role: "3D Design" },
+      { name: "Zora Ghaziyah Wanie", role: "3D Design", image: imgZora },
       { name: "Rifqi Reis Ramadhan", role: "Programming" },
       { name: "Atiqah Najla Fadhilah Rachman", role: "2D Design" },
       { name: "Zahra Alifia Anshori", role: "2D Design" },
       { name: "Muhamad Gazril Alfarizi", role: "3D Design" },
       { name: "Vikri Abdullah Razzak", role: "Programming" },
-      { name: "Haekal Abdillah Ramadhan", role: "2D Design" },
+      { name: "Haekal Abdillah Ramadhan", role: "2D Design", image: imgHaekal },
       { name: "Kaysa Naura", role: "2D Design" },
-      { name: "Rafi Andika", role: "Audio" },
+      { name: "Rafi Andika", role: "Audio", image: imgRafiAndika },
     ],
   },
 ];
@@ -35,26 +41,34 @@ const divisionData = [
 <div class="team-container w-full mt-8">
   <!-- Management / Direksi -->
   <div class="team-category mb-24">
-    <div class="flex flex-col mb-10">
-      <h3 class="text-3xl md:text-4xl font-heading text-gpp-primary mb-2 inline-block border-b-4 border-gpp-primary pb-2">
+    <div class="flex flex-col mb-4">
+      <h3 class="text-3xl md:text-4xl font-heading text-gpp-primary mb-2 inline-block border-b-4 border-gpp-primary pb-2 w-max">
         {managementData.name}
       </h3>
       <p class="text-gpp-text/80 font-medium">Leading the vision and strategy.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 mt-16">
       {
         managementData.members.map((member) => (
-          <div class="group relative bg-[#fff9e6] overflow-hidden border-2 border-gpp-primary/20 rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300 shadow-md flex flex-col justify-between min-h-[140px]">
-            <!-- Decorative Tape -->
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 bg-white/50 border-2 border-gpp-primary/20 rotate-3 z-20"></div>
-            
-            <div class="relative z-10 flex flex-col h-full justify-between gap-4 mt-2">
-              <div class="flex items-start justify-between">
-                <span class="text-xs md:text-sm font-heading uppercase tracking-wider text-white bg-gpp-primary px-3 py-1 rounded-md border-2 border-gpp-primary shadow-[2px_2px_0_0_rgba(0,0,0,0.2)] inline-block">{member.role}</span>
-              </div>
-              <h4 class="text-xl md:text-2xl font-heading text-gpp-text leading-tight">{member.name}</h4>
+          <div class="group relative bg-[#fff9e6] border-2 border-gpp-primary/20 rounded-2xl pt-4 px-6 pb-6 hover:-translate-y-2 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] flex flex-col items-center">
+            <!-- Role Badge -->
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-30 w-max">
+              <span class="text-xs md:text-sm font-heading uppercase tracking-wider text-white bg-gpp-primary px-4 py-1 rounded-full border-2 border-gpp-primary shadow-[2px_2px_0_0_rgba(0,0,0,0.2)] inline-block">{member.role}</span>
             </div>
+
+            <!-- Character Image -->
+            <div class="relative w-full h-[220px] flex justify-center items-end -mt-16 mb-4 z-20">
+              {member.image ? (
+                <Image src={member.image} alt={member.name} class="h-[120%] w-auto object-contain object-bottom drop-shadow-[4px_4px_0_rgba(47,79,47,0.3)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
+              ) : (
+                <div class="w-24 h-24 rounded-full bg-gpp-primary/5 border-4 border-gpp-primary/10 flex items-center justify-center mb-4">
+                  <span class="text-4xl text-gpp-primary/20 font-heading">?</span>
+                </div>
+              )}
+            </div>
+
+            <h4 class="text-xl md:text-2xl font-heading text-gpp-text leading-tight text-center relative z-10">{member.name}</h4>
           </div>
         ))
       }
@@ -66,20 +80,29 @@ const divisionData = [
     {
       divisionData.map((division) => (
         <div class="mb-16">
-          <div class="flex flex-col mb-8">
-            <h3 class="text-3xl md:text-4xl font-heading text-gpp-accent mb-2 inline-block border-b-4 border-gpp-accent pb-2">
+          <div class="flex flex-col mb-4">
+            <h3 class="text-3xl md:text-4xl font-heading text-gpp-accent mb-2 inline-block border-b-4 border-gpp-accent pb-2 w-max">
               {division.name}
             </h3>
             <p class="text-gpp-text/80 font-medium">The creative force bringing the game to life.</p>
           </div>
           
-          <div class="flex flex-wrap gap-4 md:gap-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 mt-16">
             {division.members.map((member) => (
-              <div class="group flex items-center gap-3 bg-white border-2 border-gpp-primary/20 rounded-full py-2 px-5 hover:-translate-y-1 transition-transform duration-300 cursor-default shadow-sm">
-                <div class="w-3 h-3 rounded-full bg-gpp-accent border-2 border-gpp-primary" />
-                <span class="font-bold text-sm md:text-base text-gpp-primary">{member.name}</span>
-                <div class="w-2 h-2 rounded-full bg-gpp-primary/20"></div>
-                <span class="text-xs font-heading uppercase text-gpp-text/80 bg-gpp-bg px-2 py-1 rounded-md border-2 border-gpp-primary/20">{member.role}</span>
+              <div class="group relative bg-white border-2 border-gpp-primary/20 rounded-xl p-4 hover:-translate-y-1 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(47,79,47,0.5)] flex flex-col items-center">
+                
+                <div class="relative w-full h-[140px] flex justify-center items-end -mt-14 mb-3 z-20">
+                  {member.image ? (
+                    <Image src={member.image} alt={member.name} class="h-[130%] w-auto object-contain object-bottom drop-shadow-[2px_2px_0_rgba(47,79,47,0.2)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
+                  ) : (
+                    <div class="w-16 h-16 rounded-full bg-gpp-accent/10 border-2 border-gpp-primary/10 flex items-center justify-center mb-2">
+                      <span class="text-2xl text-gpp-primary/20 font-heading">?</span>
+                    </div>
+                  )}
+                </div>
+
+                <span class="text-[10px] md:text-xs font-heading uppercase text-gpp-text/80 bg-gpp-bg px-2 py-1 rounded-md border-2 border-gpp-primary/20 mb-2 whitespace-nowrap">{member.role}</span>
+                <h4 class="font-bold text-sm md:text-base text-gpp-primary text-center leading-tight">{member.name}</h4>
               </div>
             ))}
           </div>
