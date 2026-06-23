@@ -51,7 +51,7 @@ const divisionData = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 mt-16">
       {
         managementData.members.map((member) => (
-          <div class="group relative bg-[#fff9e6] border-2 border-gpp-primary/20 rounded-2xl pt-4 px-6 pb-6 hover:-translate-y-2 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] flex flex-col items-center">
+          <div class="team-card group relative bg-[#fff9e6] border-2 border-gpp-primary/20 rounded-2xl pt-4 px-6 pb-6 hover:-translate-y-2 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] flex flex-col items-center cursor-pointer" data-name={member.name} data-role={member.role}>
             <!-- Role Badge -->
             <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-30 w-max">
               <span class="text-xs md:text-sm font-heading uppercase tracking-wider text-white bg-gpp-primary px-4 py-1 rounded-full border-2 border-gpp-primary shadow-[2px_2px_0_0_rgba(0,0,0,0.2)] inline-block">{member.role}</span>
@@ -89,7 +89,7 @@ const divisionData = [
           
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 mt-16">
             {division.members.map((member) => (
-              <div class="group relative bg-white border-2 border-gpp-primary/20 rounded-xl p-4 hover:-translate-y-1 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(47,79,47,0.5)] flex flex-col items-center">
+              <div class="team-card group relative bg-white border-2 border-gpp-primary/20 rounded-xl p-4 hover:-translate-y-1 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(47,79,47,0.5)] flex flex-col items-center cursor-pointer" data-name={member.name} data-role={member.role}>
                 
                 <div class="relative w-full h-[140px] flex justify-center items-end -mt-14 mb-3 z-20">
                   {member.image ? (
@@ -111,3 +111,104 @@ const divisionData = [
     }
   </div>
 </div>
+
+<dialog id="character-modal" class="bg-transparent backdrop:bg-black/60 pt-32 p-4 m-auto w-full max-w-md outline-none">
+  <div class="relative bg-[#fff9e6] border-4 border-gpp-primary rounded-3xl p-8 shadow-[8px_8px_0px_0px_rgba(47,79,47,1)] flex flex-col items-center">
+    <!-- Close button -->
+    <button id="modal-close" class="absolute -top-4 -right-4 w-10 h-10 bg-[#ff4747] text-white border-4 border-gpp-primary rounded-full font-bold text-xl flex items-center justify-center shadow-[4px_4px_0_0_rgba(47,79,47,1)] hover:bg-[#ff6b6b] hover:-translate-y-1 hover:shadow-[4px_6px_0_0_rgba(47,79,47,1)] transition-all z-50">
+      &times;
+    </button>
+
+    <!-- Character Image Container -->
+    <div id="modal-img-container" class="relative w-full h-[280px] flex justify-center items-end -mt-40 mb-6 z-20">
+      <!-- Image inserted here -->
+    </div>
+
+    <!-- Role -->
+    <div class="mb-4">
+      <span id="modal-role" class="text-xs md:text-sm font-heading uppercase tracking-widest text-white bg-gpp-primary px-6 py-2 rounded-full border-2 border-gpp-primary shadow-[2px_2px_0_0_rgba(0,0,0,0.2)] inline-block"></span>
+    </div>
+
+    <!-- Name -->
+    <h3 id="modal-name" class="text-3xl font-heading text-gpp-text text-center mb-4 leading-tight"></h3>
+
+    <!-- Detail text -->
+    <p class="text-gpp-text/80 text-center font-medium bg-white/50 p-4 rounded-xl border-2 border-gpp-primary/20 border-dashed w-full text-sm">
+      A key member of the Green Pendap Production team, bringing magic to life!
+    </p>
+  </div>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.team-card');
+    const modal = document.getElementById('character-modal') as HTMLDialogElement;
+    const modalImgContainer = document.getElementById('modal-img-container');
+    const modalName = document.getElementById('modal-name');
+    const modalRole = document.getElementById('modal-role');
+    const modalClose = document.getElementById('modal-close');
+
+    if (!modal) return;
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const name = card.getAttribute('data-name');
+        const role = card.getAttribute('data-role');
+        const img = card.querySelector('img');
+
+        if (modalName) modalName.textContent = name;
+        if (modalRole) modalRole.textContent = role;
+        
+        if (modalImgContainer) {
+          modalImgContainer.innerHTML = '';
+          if (img) {
+            const newImg = img.cloneNode() as HTMLImageElement;
+            // Override classes to fit the modal
+            newImg.className = 'h-full w-auto object-contain object-bottom drop-shadow-[6px_6px_0_rgba(47,79,47,0.3)] animate-bounce-slight';
+            modalImgContainer.appendChild(newImg);
+          } else {
+            modalImgContainer.innerHTML = '<div class="w-32 h-32 rounded-full bg-gpp-primary/5 border-4 border-gpp-primary/20 flex items-center justify-center animate-bounce-slight"><span class="text-5xl text-gpp-primary/20 font-heading">?</span></div>';
+          }
+        }
+
+        modal.showModal();
+        
+        // Disable body scroll
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeModal = () => {
+      modal.close();
+      document.body.style.overflow = '';
+    };
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close when clicking outside
+    modal.addEventListener('click', (e) => {
+      const dialogDimensions = modal.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes bounceSlight {
+    0% { transform: translateY(20px); opacity: 0; }
+    60% { transform: translateY(-10px); }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  .animate-bounce-slight {
+    animation: bounceSlight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+</style>
