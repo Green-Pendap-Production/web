@@ -332,6 +332,9 @@ const progressItems = [
                 gsap.set(win, { zIndex: zIndexCounter });
             });
         });
+        
+        const sfxSource = new Audio("https://cdn.freesound.org/previews/708/708605_13515726-lq.mp3");
+        sfxSource.preload = "auto";
 
         // Expose openWindow globally so Sidebar can call it
         (window as any).openWindow = function (id: string) {
@@ -342,6 +345,11 @@ const progressItems = [
                     win.scrollIntoView({ behavior: "smooth" });
                     return;
                 }
+
+                 const sfx = sfxSource.cloneNode() as HTMLAudioElement;
+                    sfx.volume = 0.5;
+                    sfx.play().catch(() => {});
+
 
                 zIndexCounter++;
                 gsap.set(win, { zIndex: zIndexCounter });
