@@ -304,6 +304,8 @@ const progressItems = [
         const closeBtns = document.querySelectorAll(".window-close-btn");
         closeBtns.forEach((btn) => {
             btn.addEventListener("click", (e) => {
+                const closeSound = new Audio("https://cdn.freesound.org/previews/321/321806_2567799-lq.mp3");
+                closeSound.play().catch(() => {});
                 const targetId = (btn as HTMLElement).dataset.target;
                 if (targetId) {
                     const win = document.getElementById(targetId);

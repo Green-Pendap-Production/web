@@ -152,7 +152,11 @@ const divisionData = [
     if (!modal) return;
 
     cards.forEach(card => {
+      const popSound = new Audio("https://cdn.freesound.org/previews/708/708605_13515726-lq.mp3");
+
       card.addEventListener('click', () => {
+        popSound.currentTime = 0;
+        popSound.play().catch(() => {});
         const name = card.getAttribute('data-name');
         const role = card.getAttribute('data-role');
         const img = card.querySelector('img');
