@@ -328,9 +328,7 @@ const progressItems = [
             });
         });
 
-        const sfxSource = new Audio(
-            "https://cdn.freesound.org/previews/708/708605_13515726-lq.mp3",
-        );
+        const sfxSource = new Audio("/sfx/open.mp3");
         sfxSource.preload = "auto";
 
         // Expose openWindow globally so Sidebar can call it
@@ -371,9 +369,7 @@ const progressItems = [
         };
 
         // Expose closeWindow globally so Taskbar can minimize windows
-        const closeSfx = new Audio(
-            "https://cdn.freesound.org/previews/540/540568_10912485-lq.mp3",
-        );
+        const closeSfx = new Audio("/sfx/close.mp3");
         (window as any).closeWindow = function (id: string) {
             const win = document.getElementById(`window-${id}`);
             if (win) {
