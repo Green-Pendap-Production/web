@@ -77,7 +77,7 @@ const progressItems = [
 
     <!-- Desktop Icons -->
     <div
-        class="absolute top-4 left-4 md:top-8 md:left-8 z-0 grid grid-cols-2 md:grid-cols-none gap-2 md:gap-4 pointer-events-auto items-start justify-items-center md:justify-items-start max-h-[calc(100vh-64px)] overflow-hidden sm:grid"
+        class="absolute top-8 left-8 z-0 hidden md:grid gap-4 pointer-events-auto items-start justify-items-start max-h-[calc(100vh-64px)] overflow-hidden"
         style="grid-auto-flow: column; grid-template-rows: repeat(auto-fill, 96px);"
     >
         {desktopIcons.map((icon) => <DesktopIcon {...icon} />)}
@@ -96,7 +96,7 @@ const progressItems = [
             initialX="32vw"
             initialY="8vh"
             width="w-[90vw] md:w-[700px] max-w-[95vw]"
-            height="max-h-[85vh]"
+            height="md:max-h-[85vh]"
         >
             <div class="flex flex-col items-center text-center relative pt-8">
                 <!-- Floating Sticker -->
@@ -231,7 +231,7 @@ const progressItems = [
             initialX="10vw"
             initialY="2vh"
             width="w-[95vw] md:w-[850px] max-w-[95vw]"
-            height="max-h-[85vh]"
+            height="md:max-h-[85vh]"
         >
             <div class="mb-8">
                 <span
@@ -404,15 +404,8 @@ const progressItems = [
                 setTimeout(() => (window as any).openWindow("about"), 1200); // 4. About
                 setTimeout(() => (window as any).openWindow("home"), 1500); // 5. Welcome
                 setTimeout(() => (window as any).openWindow("contact"), 3800); // 6. Contact
-            } else {
-                // Mobile: semua window dibuka untuk scroll
-                setTimeout(() => (window as any).openWindow("about"), 100);
-                setTimeout(() => (window as any).openWindow("contact"), 200);
-                setTimeout(() => (window as any).openWindow("progress"), 300);
-                setTimeout(() => (window as any).openWindow("team"), 400);
-                setTimeout(() => (window as any).openWindow("games"), 500);
-                setTimeout(() => (window as any).openWindow("home"), 600);
             }
+            // Mobile: windows are always visible in the scroll flow, nothing to open
         });
 
         // Desktop Icons logic

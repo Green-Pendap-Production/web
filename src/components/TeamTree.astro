@@ -56,7 +56,7 @@ const divisionData = [
       <p class="text-gpp-text/80 font-medium">Leading the vision and strategy.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-20 md:gap-y-16 mt-16">
       {
         managementData.members.map((member) => (
           <div class="team-card group relative bg-[#fff9e6] border-2 border-gpp-primary/20 rounded-2xl pt-4 px-6 pb-6 hover:-translate-y-2 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(47,79,47,1)] flex flex-col items-center cursor-pointer" data-name={member.name} data-role={member.role}>
@@ -68,7 +68,7 @@ const divisionData = [
             <!-- Character Image -->
             <div class="relative w-full h-[220px] flex justify-center items-end -mt-16 mb-4 z-20">
               {member.image ? (
-                <Image src={member.image} alt={member.name} class="h-[120%] w-auto object-contain object-bottom drop-shadow-[4px_4px_0_rgba(47,79,47,0.3)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
+                <Image src={member.image} alt={member.name} class="h-full md:h-[120%] w-auto object-contain object-bottom drop-shadow-[4px_4px_0_rgba(47,79,47,0.3)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
               ) : (
                 <div class="w-24 h-24 rounded-full bg-gpp-primary/5 border-4 border-gpp-primary/10 flex items-center justify-center mb-4">
                   <span class="text-4xl text-gpp-primary/20 font-heading">?</span>
@@ -95,13 +95,13 @@ const divisionData = [
             <p class="text-gpp-text/80 font-medium">The creative force bringing the game to life.</p>
           </div>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 mt-16">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-16 md:gap-y-12 mt-16">
             {division.members.map((member) => (
               <div class="team-card group relative bg-white border-2 border-gpp-primary/20 rounded-xl p-4 hover:-translate-y-1 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(47,79,47,0.5)] flex flex-col items-center cursor-pointer" data-name={member.name} data-role={member.role}>
 
                 <div class="relative w-full h-[140px] flex justify-center items-end -mt-14 mb-3 z-20">
                   {member.image ? (
-                    <Image src={member.image} alt={member.name} class="h-[130%] w-auto object-contain object-bottom drop-shadow-[2px_2px_0_rgba(47,79,47,0.2)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
+                    <Image src={member.image} alt={member.name} class="h-full md:h-[130%] w-auto object-contain object-bottom drop-shadow-[2px_2px_0_rgba(47,79,47,0.2)] transform group-hover:scale-110 transition-transform duration-300 origin-bottom" />
                   ) : (
                     <div class="w-16 h-16 rounded-full bg-gpp-accent/10 border-2 border-gpp-primary/10 flex items-center justify-center mb-2">
                       <span class="text-2xl text-gpp-primary/20 font-heading">?</span>

@@ -35,7 +35,7 @@
     <!-- Fullscreen Menu Overlay -->
     <div
         id="mobile-menu"
-        class="fixed inset-0 bg-gpp-bg z-40 flex flex-col justify-start pt-32 items-center opacity-0 pointer-events-none transition-all duration-300 translate-x-full overflow-y-auto w-screen h-screen"
+        class="fixed inset-0 bg-gpp-bg z-40 flex flex-col justify-start pt-32 items-center opacity-0 pointer-events-none transition-all duration-300 translate-x-full overflow-y-auto"
     >
         <nav class="flex flex-col gap-8 text-center">
             <a
@@ -149,11 +149,8 @@
                 menuIcon.innerHTML =
                     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
 
-                if (targetElement) {
-                    // Smooth scroll to the element, offset for the header
-                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
-                    window.scrollTo({top: y, behavior: 'smooth'});
-                }
+                // scroll-mt on the window handles the header offset
+                targetElement?.scrollIntoView({ behavior: "smooth" });
             });
         });
     }
